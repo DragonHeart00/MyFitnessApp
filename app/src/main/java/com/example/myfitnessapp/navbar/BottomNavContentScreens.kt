@@ -17,7 +17,26 @@ import androidx.compose.ui.unit.sp
 import com.example.myfitnessapp.R
 
 @Composable
-fun HomeScreen() {
+fun ExploreScreen() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(colorResource(id = R.color.white))
+            .wrapContentSize(Alignment.Center)
+    ) {
+        Text(
+            text = "Explore Screen",
+            fontWeight = FontWeight.Bold,
+            color = Color.Black,
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            textAlign = TextAlign.Center,
+            fontSize = 20.sp
+        )
+    }
+}
+
+@Composable
+fun FavoriteScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -25,7 +44,7 @@ fun HomeScreen() {
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
-            text = "Home Screen",
+            text = "Favorite Screen",
             fontWeight = FontWeight.Bold,
             color = Color.White,
             modifier = Modifier.align(Alignment.CenterHorizontally),
@@ -36,7 +55,7 @@ fun HomeScreen() {
 }
 
 @Composable
-fun NetworkScreen() {
+fun AddProgramScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -44,46 +63,7 @@ fun NetworkScreen() {
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
-            text = "My Network Screen",
-            fontWeight = FontWeight.Bold,
-            color = Color.White,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            textAlign = TextAlign.Center,
-            fontSize = 20.sp
-        )
-    }
-}
-
-@Composable
-fun AddPostScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(colorResource(id = R.color.teal_700))
-            .wrapContentSize(Alignment.Center)
-    ) {
-        Text(
-            text = "Add Post Screen",
-            fontWeight = FontWeight.Bold,
-            color = Color.White,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            textAlign = TextAlign.Center,
-            fontSize = 20.sp
-        )
-    }
-}
-
-
-@Composable
-fun NotificationScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(colorResource(id = R.color.teal_700))
-            .wrapContentSize(Alignment.Center)
-    ) {
-        Text(
-            text = "Notification Screen",
+            text = "Add Program Screen",
             fontWeight = FontWeight.Bold,
             color = Color.White,
             modifier = Modifier.align(Alignment.CenterHorizontally),
@@ -95,7 +75,7 @@ fun NotificationScreen() {
 
 
 @Composable
-fun JobScreen() {
+fun MyProgramScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -103,7 +83,27 @@ fun JobScreen() {
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
-            text = "Jobs Screen",
+            text = "My Program Screen",
+            fontWeight = FontWeight.Bold,
+            color = Color.White,
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            textAlign = TextAlign.Center,
+            fontSize = 20.sp
+        )
+    }
+}
+
+
+@Composable
+fun ProfileScreen() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(colorResource(id = R.color.teal_700))
+            .wrapContentSize(Alignment.Center)
+    ) {
+        Text(
+            text = "Profile Screen",
             fontWeight = FontWeight.Bold,
             color = Color.White,
             modifier = Modifier.align(Alignment.CenterHorizontally),

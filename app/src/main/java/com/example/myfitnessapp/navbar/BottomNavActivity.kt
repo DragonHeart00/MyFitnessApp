@@ -59,7 +59,7 @@ fun BottomNavigation(navController: NavController) {
         BottomNavItem.Jobs
     )
     BottomNavigation(
-        backgroundColor = colorResource(id = R.color.teal_200),
+        backgroundColor = colorResource(id = R.color.bar),
         contentColor = Color.Black
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -94,19 +94,19 @@ fun BottomNavigation(navController: NavController) {
 fun NavigationGraph(navController: NavHostController) {
     NavHost(navController, startDestination = BottomNavItem.Home.screen_route) {
         composable(BottomNavItem.Home.screen_route) {
-            HomeScreen()
+            ExploreScreen()
         }
         composable(BottomNavItem.MyNetwork.screen_route) {
-            NetworkScreen()
+            FavoriteScreen()
         }
         composable(BottomNavItem.AddPost.screen_route) {
-            AddPostScreen()
+            AddProgramScreen()
         }
         composable(BottomNavItem.Notification.screen_route) {
-            NotificationScreen()
+            MyProgramScreen()
         }
         composable(BottomNavItem.Jobs.screen_route) {
-            JobScreen()
+            ProfileScreen()
         }
     }
 }
