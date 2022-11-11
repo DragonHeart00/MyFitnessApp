@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.navbar
+package com.example.myfitnessapp.screen.shared.components.navbar
 
 import com.example.myfitnessapp.R
 

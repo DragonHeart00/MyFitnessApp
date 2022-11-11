@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.navbar
+package com.example.myfitnessapp.screen.shared.components.navbar
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -12,6 +12,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.myfitnessapp.R
+import com.example.myfitnessapp.screen.shared.components.screens.exploreView.ExploreScreen
+import com.example.myfitnessapp.screen.shared.components.screens.favoriteView.FavoriteScreen
+import com.example.myfitnessapp.screen.shared.components.screens.profileView.ProfileScreen
+import com.example.myfitnessapp.screen.shared.components.screens.programCreation.AddProgramScreen
+import com.example.myfitnessapp.screen.shared.components.screens.programView.MyProgramScreen
 
 
 @Composable
@@ -66,6 +71,7 @@ fun NavigationGraph(navController: NavHostController) {
         }
         composable(BottomNavItem.AddPost.screen_route) {
             AddProgramScreen()
+
         }
         composable(BottomNavItem.Notification.screen_route) {
             MyProgramScreen()
