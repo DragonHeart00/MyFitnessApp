@@ -57,38 +57,30 @@ fun ProgramNameField() {
 
     ) {
 
-        val username = remember { mutableStateOf(TextFieldValue()) }
-        val password = remember { mutableStateOf(TextFieldValue()) }
+        val programName = remember { mutableStateOf(TextFieldValue()) }
+        val numberOfExercise = remember { mutableStateOf(TextFieldValue()) }
 
-        Text(text = "Login", style = TextStyle(fontSize = 40.sp))
-
-        Spacer(modifier = Modifier.height(20.dp))
-        TextField(
-            label = { Text(text = "Username") },
-            value = username.value,
-            onValueChange = { username.value = it })
+        Text(text = "Create A Program", style = TextStyle(fontSize = 36.sp))
 
         Spacer(modifier = Modifier.height(20.dp))
         TextField(
-            label = { Text(text = "Password") },
-            value = password.value,
-            visualTransformation = PasswordVisualTransformation(),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            onValueChange = { password.value = it })
+            label = { Text(text = "Program name") },
+            value = programName.value,
+            onValueChange = { programName.value = it })
+
+        Spacer(modifier = Modifier.height(20.dp))
+        TextField(
+            label = { Text(text = "Number of exercise") },
+            value = numberOfExercise.value,
+            //visualTransformation = PasswordVisualTransformation(),
+            //keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            onValueChange = { numberOfExercise.value = it })
 
         Spacer(modifier = Modifier.height(20.dp))
         Box(modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)) {
 
         }
 
-        Spacer(modifier = Modifier.height(20.dp))
-        ClickableText(
-            text = AnnotatedString("Forgot password?"),
-            onClick = { },
-            style = TextStyle(
-                fontSize = 14.sp,
-            )
-        )
     }
     Box(Modifier.fillMaxSize().padding(0.dp,0.dp,25.dp,100.dp)) {
         Button(
