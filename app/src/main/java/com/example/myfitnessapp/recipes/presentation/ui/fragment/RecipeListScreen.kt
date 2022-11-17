@@ -14,7 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.example.myfitnessapp.navbar.MainActions
+import com.example.myfitnessapp.components.navbar.MainActions
 import com.example.myfitnessapp.presentation.ui.viewmodel.RecipeListViewModel
 import com.example.myfitnessapp.recipes.presentation.components.RecipeList
 import com.example.myfitnessapp.recipes.presentation.components.SearchAppBar

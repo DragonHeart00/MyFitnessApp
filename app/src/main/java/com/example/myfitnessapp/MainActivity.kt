@@ -9,15 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import com.example.myfitnessapp.navbar.*
-import com.example.myfitnessapp.recipes.network.internet_Connectivity.ConnectivityObserver
-import com.example.myfitnessapp.recipes.network.internet_Connectivity.NetworkConnectivityObserver
+import com.example.myfitnessapp.components.navbar.*
 import com.example.myfitnessapp.ui.theme.MyFitnessAppTheme
 import dagger.hilt.android.AndroidEntryPoint
-import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.Alignment
-import androidx.compose.foundation.layout.Box
-import androidx.compose.runtime.getValue
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -30,10 +24,6 @@ class MainActivity : ComponentActivity() {
 
             MyFitnessAppTheme {
                 // A surface container using the 'background' color from the theme
-
-
-
-
                     Surface(
                         modifier = Modifier.fillMaxSize(),
                         color = MaterialTheme.colors.background
@@ -41,10 +31,6 @@ class MainActivity : ComponentActivity() {
                         MainScreenView()
                     }
 
-
-
-
-                //////////////
 
             }
         }
@@ -57,7 +43,6 @@ fun MainScreenView(){
     Scaffold(
         bottomBar = { BottomNavigation(navController = navController) }
     ) {
-
         NavigationGraph(navController = navController)
     }
 }

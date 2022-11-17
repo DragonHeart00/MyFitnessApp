@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.navbar
+package com.example.myfitnessapp.components.navbar
 
 
 import androidx.compose.foundation.layout.Box
@@ -30,6 +30,10 @@ import com.example.myfitnessapp.recipes.network.internet_Connectivity.NetworkCon
 import com.example.myfitnessapp.recipes.presentation.ui.fragment.RecipeListScreen
 import com.example.myfitnessapp.recipes.presentation.ui.fragment.RecipesScreen
 import com.example.myfitnessapp.recipes.presentation.util.RecipeEvent
+import com.example.myfitnessapp.components.screens.favoriteView.FavoriteView
+import com.example.myfitnessapp.components.screens.profileView.ProfileView
+import com.example.myfitnessapp.components.screens.programCreation.ProgramCreationView
+import com.example.myfitnessapp.components.screens.programView.MyProgramView
 
 object EndPoints {
     const val ID = "id"
@@ -42,11 +46,11 @@ private lateinit var connectivityObserver: ConnectivityObserver
 fun BottomNavigation(navController: NavController) {
 
     val items = listOf(
-        BottomNavItem.Home,
-        BottomNavItem.MyNetwork,
-        BottomNavItem.AddPost,
-        BottomNavItem.Notification,
-        BottomNavItem.Jobs
+        BottomNavItem.Explore,
+        BottomNavItem.Favorite,
+        BottomNavItem.AddProgram,
+        BottomNavItem.MyProgram,
+        BottomNavItem.Profile
     )
     BottomNavigation(
         backgroundColor = colorResource(id = R.color.bar),
@@ -88,17 +92,8 @@ fun NavigationGraph(navController: NavHostController) {
     connectivityObserver = NetworkConnectivityObserver(applicationContext)
 
 
-    NavHost(navController, startDestination = BottomNavItem.Home.screen_route) {
-        composable(BottomNavItem.Home.screen_route) {
-            ExploreScreen()
-        }
-
-
-        //////////////RecipeListScreen
-        composable(BottomNavItem.MyNetwork.screen_route) {
-            //FavoriteScreen()
-           // RecipesScreen(navController = navController)
-
+    NavHost(navController, startDestination = BottomNavItem.Explore.screen_route) {
+        composable(BottomNavItem.Explore.screen_route) {
             val status by connectivityObserver.observe().collectAsState(
                 initial = ConnectivityObserver.Status.Unavailable
             )
@@ -120,14 +115,8 @@ fun NavigationGraph(navController: NavHostController) {
                     Text(text = "Network status: $status ")
                 }
             }
-
-
-
         }
-
-
-        /////////////RecipesScreen
-
+        //RecipesScreen
         composable(
             "${BottomNavItem.MovieDetails.screen_route}/{id}",
             arguments = listOf(navArgument(EndPoints.ID) { type = NavType.StringType })
@@ -142,16 +131,17 @@ fun NavigationGraph(navController: NavHostController) {
 
 
 
-
-
-       composable(BottomNavItem.AddPost.screen_route) {
-            AddProgramScreen()
+        composable(BottomNavItem.Favorite.screen_route) {
+            FavoriteView()
         }
-        composable(BottomNavItem.Notification.screen_route) {
-            MyProgramScreen()
+        composable(BottomNavItem.AddProgram.screen_route) {
+            ProgramCreationView()
         }
-        composable(BottomNavItem.Jobs.screen_route) {
-            ProfileScreen()
+        composable(BottomNavItem.MyProgram.screen_route) {
+            MyProgramView()
+        }
+        composable(BottomNavItem.Profile.screen_route) {
+            ProfileView()
         }
     }
 }
@@ -168,7 +158,7 @@ class MainActions(navController: NavController) {
     }
 
     val gotoRecipeList: () -> Unit = {
-        navController.navigate(BottomNavItem.MyNetwork.screen_route)
+        navController.navigate(BottomNavItem.Favorite.screen_route)
     }
 }
 
