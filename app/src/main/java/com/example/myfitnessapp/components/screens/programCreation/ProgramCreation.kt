@@ -29,7 +29,7 @@ fun ProgramNameFields() {
     var text by remember { mutableStateOf(TextFieldValue("")) }
     OutlinedTextField(
         value = text,
-        label = { Text(text = "Enter Program Name") },
+        label = { Text(text = "Enter Program Name ..") },
         onValueChange = {
             text = it
         }
