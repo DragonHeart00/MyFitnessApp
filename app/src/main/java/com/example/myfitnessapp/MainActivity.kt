@@ -8,8 +8,10 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.myfitnessapp.components.navbar.*
+import com.example.myfitnessapp.login.LoginViewModel
 import com.example.myfitnessapp.ui.theme.MyFitnessAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,14 +23,14 @@ class MainActivity : ComponentActivity() {
 
 
         setContent {
-
+            val loginViewModel = viewModel(modelClass = LoginViewModel::class.java)
             MyFitnessAppTheme {
                 // A surface container using the 'background' color from the theme
                     Surface(
                         modifier = Modifier.fillMaxSize(),
                         color = MaterialTheme.colors.background
                     ) {
-                        MainScreenView()
+                        Navigation(loginViewModel = loginViewModel)
                     }
 
 
@@ -37,20 +39,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun MainScreenView(){
-    val navController = rememberNavController()
-    Scaffold(
-        bottomBar = { BottomNavigation(navController = navController) }
-    ) {
-        NavigationGraph(navController = navController)
-    }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun BottomNavigationPreview() {
-    MainScreenView()
-}
 
 
