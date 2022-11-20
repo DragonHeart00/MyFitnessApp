@@ -1,14 +1,13 @@
 package com.example.myfitnessapp
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.myfitnessapp.home.MainScreenView
-import com.example.myfitnessapp.login.LoginScreen
-import com.example.myfitnessapp.login.LoginViewModel
-import com.example.myfitnessapp.login.SignUpScreen
+import com.example.myfitnessapp.screens.home.MainScreenView
+import com.example.myfitnessapp.screens.login.LoginScreen
+import com.example.myfitnessapp.screens.login.LoginViewModel
+import com.example.myfitnessapp.screens.login.SignUpScreen
 
 
 enum class LoginRoutes {

@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.login.repository
+package com.example.myfitnessapp.repository
 
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth

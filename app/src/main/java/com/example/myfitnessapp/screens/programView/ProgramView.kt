@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.components.screens.exploreView
+package com.example.myfitnessapp.screens.programView
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -15,18 +15,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.example.myfitnessapp.R
 
+
 @Composable
-fun ExploreView() {
+fun MyProgramView() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorResource(id = R.color.white))
+            .background(colorResource(id = R.color.teal_700))
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
-            text = "Explore Screen",
+            text = "My Program Screen",
             fontWeight = FontWeight.Bold,
-            color = Color.Black,
+            color = Color.White,
             modifier = Modifier.align(Alignment.CenterHorizontally),
             textAlign = TextAlign.Center,
             fontSize = 20.sp

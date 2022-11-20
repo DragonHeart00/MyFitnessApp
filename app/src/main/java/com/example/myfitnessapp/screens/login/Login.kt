@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.login
+package com.example.myfitnessapp.screens.login
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

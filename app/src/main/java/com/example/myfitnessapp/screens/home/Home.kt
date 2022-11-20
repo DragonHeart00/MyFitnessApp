@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.home
+package com.example.myfitnessapp.screens.home
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview

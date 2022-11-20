@@ -30,10 +30,10 @@ import com.example.myfitnessapp.recipes.network.internet_Connectivity.NetworkCon
 import com.example.myfitnessapp.recipes.presentation.ui.fragment.RecipeListScreen
 import com.example.myfitnessapp.recipes.presentation.ui.fragment.RecipesScreen
 import com.example.myfitnessapp.recipes.presentation.util.RecipeEvent
-import com.example.myfitnessapp.components.screens.favoriteView.FavoriteView
-import com.example.myfitnessapp.components.screens.profileView.ProfileView
-import com.example.myfitnessapp.components.screens.programCreation.ProgramCreationView
-import com.example.myfitnessapp.components.screens.programView.MyProgramView
+import com.example.myfitnessapp.screens.favoriteView.FavoriteView
+import com.example.myfitnessapp.screens.profileView.ProfileView
+import com.example.myfitnessapp.screens.programCreation.ProgramCreationView
+import com.example.myfitnessapp.screens.programView.MyProgramView
 
 object EndPoints {
     const val ID = "id"
