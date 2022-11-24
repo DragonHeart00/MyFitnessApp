@@ -14,6 +14,8 @@ class AuthRepository {
 
     fun getUserId():String = Firebase.auth.currentUser?.uid.orEmpty()
 
+    fun signOut() = Firebase.auth.signOut()
+
     suspend fun createUser(
         email:String,
         password:String,

@@ -11,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.myfitnessapp.components.navbar.*
+import com.example.myfitnessapp.home.HomeViewModal
 import com.example.myfitnessapp.login.LoginViewModel
 import com.example.myfitnessapp.ui.theme.MyFitnessAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,13 +25,17 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val loginViewModel = viewModel(modelClass = LoginViewModel::class.java)
+            val homeViewModal = viewModel(modelClass = HomeViewModal ::class.java)
             MyFitnessAppTheme {
                 // A surface container using the 'background' color from the theme
                     Surface(
                         modifier = Modifier.fillMaxSize(),
                         color = MaterialTheme.colors.background
                     ) {
-                        Navigation(loginViewModel = loginViewModel)
+                        Navigation(
+                            loginViewModel = loginViewModel,
+                            homeViewModal = homeViewModal
+                        )
                     }
 
 

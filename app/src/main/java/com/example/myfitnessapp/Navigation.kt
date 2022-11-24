@@ -5,6 +5,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.myfitnessapp.home.Home
+import com.example.myfitnessapp.home.HomeViewModal
 import com.example.myfitnessapp.home.MainScreenView
 import com.example.myfitnessapp.login.LoginScreen
 import com.example.myfitnessapp.login.LoginViewModel
@@ -26,6 +28,7 @@ enum class HomeRoutes {
 fun Navigation(
     navController: NavHostController = rememberNavController(),
     loginViewModel: LoginViewModel,
+    homeViewModal: HomeViewModal
 ) {
     NavHost(
         navController = navController,
@@ -68,7 +71,13 @@ fun Navigation(
         }
 
         composable(route = HomeRoutes.Home.name) {
-            MainScreenView()
+            //MainScreenView()
+            Home(
+                homeViewModal = homeViewModal,
+                navToLoginPage = {
+                    navController.navigate(LoginRoutes.SignIn.name)
+                }
+            )
         }
 
     }
