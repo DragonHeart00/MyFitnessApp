@@ -1,7 +1,14 @@
 package com.example.myfitnessapp.screens.programCreation
 
+import android.annotation.SuppressLint
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -9,33 +16,20 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.launch
 
 @Composable
-fun ProgramCreationView() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(10.dp)
-    ) {
+fun ProgramCreationView(
 
-        ProgramNameField()
+) {
 
-    }
+
+    ProgramNameField()
+
 }
 
 
-@Composable
-fun ProgramNameFields() {
-    var text by remember { mutableStateOf(TextFieldValue("")) }
-    OutlinedTextField(
-        value = text,
-        label = { Text(text = "Enter Program Name ..") },
-        onValueChange = {
-            text = it
-        }
-    )
 
-}
 
 
 @Composable

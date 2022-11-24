@@ -21,3 +21,4 @@ fun MainScreenView(){
 fun BottomNavigationPreview() {
     MainScreenView()
 }
+

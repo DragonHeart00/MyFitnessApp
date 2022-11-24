@@ -32,7 +32,6 @@ import com.example.myfitnessapp.recipes.presentation.ui.fragment.RecipesScreen
 import com.example.myfitnessapp.recipes.presentation.util.RecipeEvent
 import com.example.myfitnessapp.screens.favoriteView.FavoriteView
 import com.example.myfitnessapp.screens.profileView.ProfileView
-import com.example.myfitnessapp.screens.programCreation.ProgramCreationView
 import com.example.myfitnessapp.screens.programView.MyProgramView
 
 object EndPoints {
@@ -135,7 +134,7 @@ fun NavigationGraph(navController: NavHostController) {
             FavoriteView()
         }
         composable(BottomNavItem.AddProgram.screen_route) {
-            ProgramCreationView()
+            //ProgramCreationView()
         }
         composable(BottomNavItem.MyProgram.screen_route) {
             MyProgramView()

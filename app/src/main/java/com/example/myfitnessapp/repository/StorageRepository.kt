@@ -1,6 +1,5 @@
 package com.example.myfitnessapp.repository
-
-import com.example.myfitnessapp.models.Programs
+import com.example.myfitnessapp.models.Notes
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.CollectionReference
@@ -12,113 +11,141 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
-const val PROGRAMS_COLLECTION_REF = "programs"
+const val NOTES_COLLECTION_REF = "notes"
 
-class StorageRepository(){
-    val user = Firebase.auth.currentUser
-    fun hasUser():Boolean = Firebase.auth.currentUser != null
+class StorageRepository {
 
-    fun getUserId():String = Firebase.auth.currentUser?.uid.orEmpty()
+    fun user() = Firebase.auth.currentUser
+    fun hasUser(): Boolean = Firebase.auth.currentUser != null
 
-    private val programsRef:CollectionReference = Firebase
-        .firestore.collection(PROGRAMS_COLLECTION_REF)
+    fun getUserId(): String = Firebase.auth.currentUser?.uid.orEmpty()
 
-    //fetch data from database
+    private val notesRef: CollectionReference = Firebase
+        .firestore.collection(NOTES_COLLECTION_REF)
+
     @OptIn(ExperimentalCoroutinesApi::class)
-    fun getUserPrograms(
-        userId:String
-    ):Flow<Resources<List<Programs>>> = callbackFlow {
+    fun getUserNotes(
+        userId: String,
+    ): Flow<Resources<List<Notes>>> = callbackFlow {
         var snapshotStateListener: ListenerRegistration? = null
+
         try {
-            snapshotStateListener = programsRef
+            snapshotStateListener = notesRef
                 .orderBy("timestamp")
-                .whereEqualTo("userId",userId)
-                .addSnapshotListener{snapshot, e ->
-                    val response = if (snapshot != null){
-                        val programs = snapshot.toObjects(Programs::class.java)
-                        Resources.Success(data = programs)
-                    }else{
+                .whereEqualTo("userId", userId)
+                .addSnapshotListener { snapshot, e ->
+                    val response = if (snapshot != null) {
+                        val notes = snapshot.toObjects(Notes::class.java)
+                        Resources.Success(data = notes)
+                    } else {
                         Resources.Error(throwable = e?.cause)
                     }
                     trySend(response)
+
                 }
-        }catch (e:Exception){
-            trySend(Resources.Error(e?.cause))
+
+
+        } catch (e: Exception) {
+            trySend(Resources.Error(e.cause))
             e.printStackTrace()
         }
-        awaitClose{
+
+        awaitClose {
             snapshotStateListener?.remove()
         }
 
+
     }
 
-    fun getProgram(
-        programId:String,
+    fun getNote(
+        noteId:String,
         onError:(Throwable?) -> Unit,
-        onSuccess: (Programs?) -> Unit
+        onSuccess: (Notes?) -> Unit
     ){
-        programsRef
-            .document(programId)
+        notesRef
+            .document(noteId)
             .get()
             .addOnSuccessListener {
-                onSuccess.invoke(it?.toObject(Programs::class.java))
+                onSuccess.invoke(it?.toObject(Notes::class.java))
             }
-            .addOnFailureListener{ result ->
+            .addOnFailureListener {result ->
                 onError.invoke(result.cause)
-
             }
+
+
     }
 
-    fun addPrograms(
-        userId:String,
-        title:String,
-        description:String,
+    fun addNote(
+        userId: String,
+        title: String,
+        description: String,
         timestamp: Timestamp,
+        color: Int = 0,
         onComplete: (Boolean) -> Unit,
     ){
-        val documentId = programsRef.document().id
-        val program = Programs(userId,title,description,timestamp,documentId= documentId)
-        programsRef
+        val documentId = notesRef.document().id
+        val note = Notes(
+            userId,
+            title,
+            description,
+            timestamp,
+            colorIndex = color,
+            documentId = documentId
+        )
+        notesRef
             .document(documentId)
-            .set(program)
-            .addOnCompleteListener{ result ->
+            .set(note)
+            .addOnCompleteListener { result ->
                 onComplete.invoke(result.isSuccessful)
             }
+
+
     }
 
-    fun deleteProgram(programId: String, onComplete:(Boolean) -> Unit){
-        programsRef.document(programId)
+    fun deleteNote(noteId: String,onComplete: (Boolean) -> Unit){
+        notesRef.document(noteId)
             .delete()
-            .addOnCompleteListener{
+            .addOnCompleteListener {
                 onComplete.invoke(it.isSuccessful)
             }
     }
 
-    fun updateProgram(
+    fun updateNote(
         title: String,
-        program:String,
-        programId:String,
-        onResult:(Boolean)-> Unit,
+        note:String,
+        color: Int,
+        noteId: String,
+        onResult:(Boolean) -> Unit
     ){
         val updateData = hashMapOf<String,Any>(
-            "description" to program,
-            "title" to title
+            "colorIndex" to color,
+            "description" to note,
+            "title" to title,
         )
-        programsRef.document(programId)
+
+        notesRef.document(noteId)
             .update(updateData)
-            .addOnCompleteListener{
-                onResult.invoke(it.isSuccessful)
+            .addOnCompleteListener {
+                onResult(it.isSuccessful)
             }
+
+
+
     }
 
+    fun signOut() = Firebase.auth.signOut()
+
+
 }
+
 
 sealed class Resources<T>(
-    val data:T?= null,
+    val data: T? = null,
     val throwable: Throwable? = null,
-){
-    class Loading<T>:Resources<T>()
-    class Success<T>(data: T?):Resources<T>(data = data)
-    class Error<T>(throwable: Throwable?):Resources<T>(throwable = throwable)
+) {
+    class Loading<T> : Resources<T>()
+    class Success<T>(data: T?) : Resources<T>(data = data)
+    class Error<T>(throwable: Throwable?) : Resources<T>(throwable = throwable)
 
 }
+
