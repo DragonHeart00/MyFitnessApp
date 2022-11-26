@@ -31,8 +31,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.myfitnessapp.recipes.presentation.util.FoodCategory
-import com.example.myfitnessapp.recipes.presentation.util.getAllFoodCategories
 import kotlinx.coroutines.launch
 
 import javax.inject.Inject
@@ -44,8 +42,6 @@ fun SearchAppBar(
     onQueryChanged: (String) -> Unit,
     onExecuteSearch: () -> Unit,
     categoryScrollPosition: Float,
-    selectedCategory: FoodCategory?,
-    onSelectedCategoryChanged: (String) -> Unit,
     onCategoryScrollPositionChanged: (Float) -> Unit,
     toggleThemeIcon: ImageVector,
     toggleTheme: () -> Unit
@@ -140,7 +136,6 @@ fun SearchAppBar(
 private fun AddComposablesInLoopSample(
     onExecuteSearch: () -> Unit,
     categoryScrollPosition: Float,
-    selectedCategory: FoodCategory?,
     onSelectedCategoryChanged: (String) -> Unit,
     onCategoryScrollPositionChanged: (Float) -> Unit,) {
 
@@ -155,16 +150,7 @@ private fun AddComposablesInLoopSample(
         coroutineScope.launch {
             scrollState.animateScrollTo(categoryScrollPosition.toInt())
         }
-        getAllFoodCategories().forEach {
-            FoodCategoryChip(
-                category = it.value,
-                isSelected = it == selectedCategory,
-                onExecuteSearch = { onExecuteSearch() },
-            ) { q ->
-                onSelectedCategoryChanged(q)
-                onCategoryScrollPositionChanged(scrollState.value.toFloat())
-            }
-        }
+
     }
 }
 

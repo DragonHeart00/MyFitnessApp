@@ -8,10 +8,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myfitnessapp.recipes.domain.model.Recipe
-import com.example.myfitnessapp.recipes.presentation.util.FoodCategory
 import com.example.myfitnessapp.recipes.presentation.util.RecipeListEvent
 import com.example.myfitnessapp.recipes.presentation.util.RecipeListEvent.*
-import com.example.myfitnessapp.recipes.presentation.util.getFoodCategory
 import com.example.myfitnessapp.recipes.repository.RecipeRepository
 import com.example.myfitnessapp.recipes.util.*
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,7 +28,6 @@ class RecipeListViewModel @Inject constructor(
 ) : ViewModel() {
     val recipes: MutableState<List<Recipe>> = mutableStateOf(listOf())
     val query = mutableStateOf("")
-    val selectedCategory: MutableState<FoodCategory?> = mutableStateOf(null)
     val loading: MutableState<Boolean> = mutableStateOf(false)
     val page = mutableStateOf(1)
     private var recipeListScrollPosition = 0
@@ -114,11 +111,7 @@ class RecipeListViewModel @Inject constructor(
         setRecipeListScrollPosition(position)
     }
 
-    fun onSelectedCategoryChanged(category: String) {
-        val newCategory = getFoodCategory(category)
-        setSelectedCategory(newCategory)
-        onQueryChanged(category)
-    }
+
 
     fun onCategoryScrollPositionChanged(position: Float) {
         _categoryScrollPosition = position
@@ -130,12 +123,10 @@ class RecipeListViewModel @Inject constructor(
         recipes.value = listOf()
         page.value = 1
         onRecipeScrollPositionChanged(0)
-        if (selectedCategory.value?.value != query.value) clearSelectedCategory()
+
     }
 
-    private fun clearSelectedCategory() {
-        setSelectedCategory(null)
-    }
+
 
     private fun setRecipeListScrollPosition(position: Int) {
         recipeListScrollPosition = position
@@ -147,10 +138,7 @@ class RecipeListViewModel @Inject constructor(
         savedStateHandle.set(STATE_KEY_RECIPE_LIST_PAGE, p)
     }
 
-    private fun setSelectedCategory(foodCategory: FoodCategory?) {
-        selectedCategory.value = foodCategory
-        savedStateHandle.set(STATE_KEY_RECIPE_LIST_SELECTED_CATEGORY, foodCategory)
-    }
+
 
     private fun setQuery(q: String) {
         query.value = q
@@ -161,11 +149,6 @@ class RecipeListViewModel @Inject constructor(
         with(savedStateHandle) {
             get<Int>(STATE_KEY_RECIPE_LIST_PAGE)?.let { setPage(it) }
             get<String>(STATE_KEY_RECIPE_LIST_QUERY)?.let { setQuery(it) }
-            get<FoodCategory?>(STATE_KEY_RECIPE_LIST_SELECTED_CATEGORY)?.let {
-                setSelectedCategory(
-                    it
-                )
-            }
             get<Int>(STATE_KEY_RECIPE_LIST_POSITION)?.let { setRecipeListScrollPosition(it) }
         }
     }

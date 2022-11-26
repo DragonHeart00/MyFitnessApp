@@ -52,7 +52,6 @@ fun RecipeListScreen(navController: NavHostController, actions: MainActions, vie
             ) {
                 val recipes = viewModel.recipes.value
                 val query = viewModel.query.value
-                val selectedCategory = viewModel.selectedCategory.value
                 val page = viewModel.page.value
                 val isDark = false // application.isDarkTheme.value
 
@@ -62,17 +61,10 @@ fun RecipeListScreen(navController: NavHostController, actions: MainActions, vie
                             query = query,
                             onQueryChanged = viewModel::onQueryChanged,
                             onExecuteSearch = {
-                                if (viewModel.selectedCategory.value?.value == ("Milk")) {
-                                 /*   snackbarController.getScope().launch {
-                                        snackbarController.showSnackbar(
-                                            scaffoldState, "Error on MILK recipes", "ERROR"
-                                        )
-                                    }*/
-                                } else viewModel.onTriggerEvent(SearchEvent)
+
+                                viewModel.onTriggerEvent(SearchEvent)
                             },
                             categoryScrollPosition = viewModel.categoryScrollPosition(),
-                            selectedCategory = selectedCategory,
-                            onSelectedCategoryChanged = viewModel::onSelectedCategoryChanged,
                             onCategoryScrollPositionChanged = viewModel::onCategoryScrollPositionChanged,
                             toggleThemeIcon = if (isDark) Icons.Filled.WbSunny else Icons.Filled.NightlightRound
                         ) {
