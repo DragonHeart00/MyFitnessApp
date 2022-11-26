@@ -1,13 +1,12 @@
 package com.example.myfitnessapp.home
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import com.example.myfitnessapp.components.navbar.BottomNavigation
-import com.example.myfitnessapp.components.navbar.NavigationGraph
+import com.example.myfitnessapp.recipes.presentation.components.navbar.BottomNavigation
+import com.example.myfitnessapp.recipes.presentation.components.navbar.NavigationGraph
 
 @Composable
 fun Home(homeViewModal: HomeViewModal, navToLoginPage: () -> Unit){

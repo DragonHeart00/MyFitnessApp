@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.components.navbar
+package com.example.myfitnessapp.recipes.presentation.components.navbar
 
 import com.example.myfitnessapp.R
 

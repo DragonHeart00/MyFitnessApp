@@ -13,12 +13,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.myfitnessapp.components.navbar.MainActions
+import com.example.myfitnessapp.recipes.presentation.components.navbar.MainActions
 import com.example.myfitnessapp.presentation.ui.viewmodel.RecipeViewModel
 import com.example.myfitnessapp.recipes.presentation.components.RecipeView
 import com.example.myfitnessapp.recipes.presentation.components.animation.ShimmerRecipeAnimation
-import com.example.myfitnessapp.recipes.presentation.theme.AppTheme
 import com.example.myfitnessapp.recipes.util.RECIPE_VIEW_HEIGHT
+import com.example.myfitnessapp.ui.theme.AppTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 

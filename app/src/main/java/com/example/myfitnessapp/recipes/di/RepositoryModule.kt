@@ -16,13 +16,12 @@ import javax.inject.Singleton
 object RepositoryModule {
     @Singleton
     @Provides
-    fun provideRecipeRepository(
-        recipeService: RecipeService,
-        recipeDtoMapper: RecipeDtoMapper
-    ): RecipeRepository {
+    fun provideRecipeRepository(recipeService: RecipeService, recipeDtoMapper: RecipeDtoMapper): RecipeRepository {
+
         return RecipeRepositoryImpl(
             recipeService,
             recipeDtoMapper
         )
+
     }
 }
