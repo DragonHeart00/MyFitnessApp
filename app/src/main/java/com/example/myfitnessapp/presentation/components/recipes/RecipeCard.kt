@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.presentation.components
+package com.example.myfitnessapp.presentation.components.recipes
 
 import android.util.Log
 import androidx.compose.foundation.clickable
@@ -13,6 +13,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.myfitnessapp.domain.model.Recipe
 import com.example.myfitnessapp.presentation.components.rating.components.RatingComponent
+import com.example.myfitnessapp.presentation.components.recipes.FoodImage
 import com.example.myfitnessapp.util.RECIPE_CARD_HEIGHT
 
 

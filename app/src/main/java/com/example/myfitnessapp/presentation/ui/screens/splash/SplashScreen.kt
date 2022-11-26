@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.presentation.ui.screens.home
+package com.example.myfitnessapp.presentation.ui.screens.splash
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

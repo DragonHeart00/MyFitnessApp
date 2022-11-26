@@ -23,8 +23,8 @@ object EndPoints {
 fun BottomNavigation(navController: NavController) {
 
     val items = listOf(
+        BottomNavItem.Workouts,
         BottomNavItem.Explore,
-        BottomNavItem.Favorite,
         BottomNavItem.AddProgram,
         BottomNavItem.MyProgram,
         BottomNavItem.Profile
@@ -73,8 +73,6 @@ class MainActions(navController: NavController) {
         navController.navigate("${BottomNavItem.MovieDetails.screen_route}/$isbnNo")
     }
 
-    val gotoRecipeList: () -> Unit = {
-        navController.navigate(BottomNavItem.Favorite.screen_route)
-    }
+
 }
 

@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.presentation.components
+package com.example.myfitnessapp.presentation.components.recipes
 
 import android.os.Bundle
 import android.util.Log

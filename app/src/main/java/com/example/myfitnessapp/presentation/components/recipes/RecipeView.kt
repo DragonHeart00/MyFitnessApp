@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.presentation.components
+package com.example.myfitnessapp.presentation.components.recipes
 
 import android.content.Context
 import android.content.Intent
@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.example.myfitnessapp.domain.model.Recipe
 import com.example.myfitnessapp.presentation.components.rating.components.RatingComponent
+import com.example.myfitnessapp.presentation.components.recipes.FoodImage
 import com.example.myfitnessapp.util.RECIPE_VIEW_HEIGHT
 
 

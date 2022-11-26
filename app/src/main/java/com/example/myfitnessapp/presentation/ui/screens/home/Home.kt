@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import com.example.myfitnessapp.NavigationBar
+import com.example.myfitnessapp.presentation.navigation.NavigationBar
 import com.example.myfitnessapp.presentation.components.navbar.BottomNavigation
 
 @Composable

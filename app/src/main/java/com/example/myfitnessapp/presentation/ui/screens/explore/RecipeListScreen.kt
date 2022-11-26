@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.presentation.ui.fragment
+package com.example.myfitnessapp.presentation.ui.screens.explore
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -15,9 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.myfitnessapp.presentation.components.navbar.MainActions
+import com.example.myfitnessapp.presentation.components.recipes.RecipeList
+import com.example.myfitnessapp.presentation.components.recipes.SearchAppBar
 import com.example.myfitnessapp.presentation.ui.viewmodel.RecipeListViewModel
-import com.example.myfitnessapp.presentation.components.RecipeList
-import com.example.myfitnessapp.presentation.components.SearchAppBar
 import com.example.myfitnessapp.presentation.util.RecipeListEvent.*
 import com.example.myfitnessapp.ui.theme.AppTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController

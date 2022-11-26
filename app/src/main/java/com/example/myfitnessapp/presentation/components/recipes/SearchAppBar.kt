@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.presentation.components
+package com.example.myfitnessapp.presentation.components.recipes
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.horizontalScroll

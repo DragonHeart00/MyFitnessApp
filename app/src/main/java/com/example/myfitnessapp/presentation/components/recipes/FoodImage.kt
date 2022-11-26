@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.presentation.components
+package com.example.myfitnessapp.presentation.components.recipes
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth

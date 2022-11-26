@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.presentation.ui.fragment
+package com.example.myfitnessapp.presentation.components.recipes
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.*

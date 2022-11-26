@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.presentation.ui.screens.favoriteView
+package com.example.myfitnessapp.presentation.ui.screens.workout
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

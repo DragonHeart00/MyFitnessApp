@@ -1,4 +1,4 @@
-package com.example.myfitnessapp
+package com.example.myfitnessapp.presentation.navigation
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
@@ -17,25 +17,25 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.myfitnessapp.presentation.ui.screens.favoriteView.FavoriteView
+import com.example.myfitnessapp.MyFitnessApp
+import com.example.myfitnessapp.presentation.ui.screens.workout.FavoriteView
 import com.example.myfitnessapp.presentation.ui.screens.profileView.ProfileView
 import com.example.myfitnessapp.presentation.ui.screens.programCreation.ProgramCreationView
 import com.example.myfitnessapp.presentation.ui.screens.programView.MyProgramView
 import com.example.myfitnessapp.presentation.ui.screens.home.Home
 import com.example.myfitnessapp.presentation.ui.screens.home.HomeViewModal
-import com.example.myfitnessapp.presentation.ui.screens.home.SplashScreen
+import com.example.myfitnessapp.presentation.ui.screens.splash.SplashScreen
 import com.example.myfitnessapp.presentation.ui.auth.LoginScreen
 import com.example.myfitnessapp.presentation.ui.auth.LoginViewModel
 import com.example.myfitnessapp.presentation.ui.auth.SignUpScreen
-import com.example.myfitnessapp.presentation.navigation.Screen
 import com.example.myfitnessapp.presentation.ui.viewmodel.RecipeViewModel
 import com.example.myfitnessapp.network.internet_Connectivity.ConnectivityObserver
 import com.example.myfitnessapp.network.internet_Connectivity.NetworkConnectivityObserver
 import com.example.myfitnessapp.presentation.components.navbar.BottomNavItem
 import com.example.myfitnessapp.presentation.components.navbar.EndPoints
 import com.example.myfitnessapp.presentation.components.navbar.MainActions
-import com.example.myfitnessapp.presentation.ui.fragment.RecipeListScreen
-import com.example.myfitnessapp.presentation.ui.fragment.RecipesScreen
+import com.example.myfitnessapp.presentation.ui.screens.explore.RecipeListScreen
+import com.example.myfitnessapp.presentation.ui.screens.explore.RecipesScreen
 import com.example.myfitnessapp.presentation.util.RecipeEvent
 
 
@@ -118,12 +118,15 @@ fun NavigationBar(navController: NavHostController) {
     connectivityObserver = NetworkConnectivityObserver(applicationContext)
 
 
-    NavHost(navController, startDestination = BottomNavItem.Explore.screen_route) {
+    NavHost(navController, startDestination = BottomNavItem.Workouts.screen_route) {
+
+        composable(BottomNavItem.Workouts.screen_route) {
+            FavoriteView()
+        }
         composable(BottomNavItem.Explore.screen_route) {
             val status by connectivityObserver.observe().collectAsState(
                 initial = ConnectivityObserver.Status.Unavailable
             )
-
 
             if (status.name =="Available"){
                 Surface(
@@ -155,11 +158,6 @@ fun NavigationBar(navController: NavHostController) {
             RecipesScreen(viewModel, actions,navController)
         }
 
-
-
-        composable(BottomNavItem.Favorite.screen_route) {
-            FavoriteView()
-        }
         composable(BottomNavItem.AddProgram.screen_route) {
             ProgramCreationView()
         }
