@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.navigation
+package com.example.myfitnessapp.recipes.presentation.navigation
 
 import com.example.myfitnessapp.recipes.util.Constants.HOME_SCREEN
 import com.example.myfitnessapp.recipes.util.Constants.SIGN_IN

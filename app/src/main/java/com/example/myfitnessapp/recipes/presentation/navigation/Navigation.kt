@@ -27,7 +27,7 @@ import com.example.myfitnessapp.recipes.presentation.ui.screens.home.SplashScree
 import com.example.myfitnessapp.recipes.presentation.ui.auth.LoginScreen
 import com.example.myfitnessapp.recipes.presentation.ui.auth.LoginViewModel
 import com.example.myfitnessapp.recipes.presentation.ui.auth.SignUpScreen
-import com.example.myfitnessapp.navigation.Screen
+import com.example.myfitnessapp.recipes.presentation.navigation.Screen
 import com.example.myfitnessapp.presentation.ui.viewmodel.RecipeViewModel
 import com.example.myfitnessapp.recipes.network.internet_Connectivity.ConnectivityObserver
 import com.example.myfitnessapp.recipes.network.internet_Connectivity.NetworkConnectivityObserver
