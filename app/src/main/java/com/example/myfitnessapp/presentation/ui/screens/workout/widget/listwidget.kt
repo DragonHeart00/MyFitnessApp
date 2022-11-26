@@ -6,12 +6,15 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 
 import androidx.compose.material.*
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -39,15 +42,16 @@ fun BuildList(list: List<Program>, onItemClick: (String) -> Unit) {
                     Surface(
                         modifier = Modifier
                             .padding(all = 12.dp)
-                            .size(80.dp), shape = CircleShape, elevation = 4.dp
                     ) {
+                            Image(
+                                painter = rememberImagePainter(data = it.programImageId),
+                                contentDescription = null,
+                                 contentScale = ContentScale.Crop,
+                                 modifier = Modifier
+                                .padding(8.dp)
+                                .size(84.dp)
+                                .clip(RoundedCornerShape(corner = CornerSize(16.dp))))
 
-                        Image(
-                            painter = rememberImagePainter(data = it.programImageId),
-                            contentDescription = null,
-                            contentScale = ContentScale.FillBounds,
-                            modifier = Modifier.fillMaxWidth()
-                        )
                     }
                     Column {
                         Text(text = it.title, color = Color.Black, fontWeight = FontWeight.Bold)

@@ -25,48 +25,8 @@ import com.example.myfitnessapp.domain.model.getProgram
 fun ProgramDetails(navController: NavController, programId: String?) {
     val programData= getProgram().filter { programData ->programData.id==programId  }
     Scaffold() {
-
-    }
-    Scaffold(topBar = {
-        TopAppBar(
-            elevation = 3.dp,
-            backgroundColor = Color.White
-        ) {
-            Row(
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-
-                Icon(
-                    imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "Icon",
-                    tint = Color.Black,
-                    modifier = Modifier.clickable { navController.popBackStack() }
-
-                )
-                Spacer(modifier = Modifier.width(30.dp))
-                Text(text = programData[0].title,
-                    fontWeight = FontWeight.Bold,
-                    )
-                Spacer(modifier = Modifier.weight(1f))
-                Icon(
-                    imageVector = Icons.Default.Notifications,
-                    contentDescription = "Icon",
-                    tint = Color.Black
-                )
-                Spacer(modifier = Modifier.width(10.dp))
-                Icon(
-                    imageVector = Icons.Default.MoreVert,
-                    contentDescription = "Icon",
-                    tint = Color.Black
-                )
-
-            }
-
-        }
-    }) {
         BuildProfile(program = programData[0])
     }
-
 }
 
 

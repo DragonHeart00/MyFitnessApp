@@ -17,6 +17,7 @@ fun Home(homeViewModal: HomeViewModal, navToLoginPage: () -> Unit){
         scaffoldState = scaffoldState,
         topBar = {
             TopAppBar(
+                backgroundColor = Color.White,
                 navigationIcon = {},
                 actions = {
                     IconButton(onClick = {
