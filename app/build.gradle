@@ -145,7 +145,7 @@ dependencies {
     implementation "androidx.compose.animation:animation:$version"
 
 
-
+    implementation "com.airbnb.android:lottie-compose:5.0.3"
 
 
 }

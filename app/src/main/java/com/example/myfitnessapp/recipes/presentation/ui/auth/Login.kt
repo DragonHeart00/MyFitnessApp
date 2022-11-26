@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.login
+package com.example.myfitnessapp.recipes.presentation.ui.auth
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

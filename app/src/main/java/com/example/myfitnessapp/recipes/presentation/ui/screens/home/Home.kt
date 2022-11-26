@@ -1,12 +1,13 @@
-package com.example.myfitnessapp.home
+package com.example.myfitnessapp.recipes.presentation.ui.screens.home
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import com.example.myfitnessapp.NavigationBar
 import com.example.myfitnessapp.recipes.presentation.components.navbar.BottomNavigation
-import com.example.myfitnessapp.recipes.presentation.components.navbar.NavigationGraph
 
 @Composable
 fun Home(homeViewModal: HomeViewModal, navToLoginPage: () -> Unit){
@@ -15,6 +16,7 @@ fun Home(homeViewModal: HomeViewModal, navToLoginPage: () -> Unit){
         scaffoldState = scaffoldState,
         topBar = {
             TopAppBar(
+                backgroundColor = Color.White,
                 navigationIcon = {},
                 actions = {
                     IconButton(onClick = {
@@ -46,7 +48,7 @@ fun MainScreenView(){
     Scaffold(
         bottomBar = { BottomNavigation(navController = navController) }
     ) {
-        NavigationGraph(navController = navController)
+        NavigationBar(navController = navController)
     }
 }
 

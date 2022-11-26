@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.components.screens.programCreation
+package com.example.myfitnessapp.recipes.presentation.ui.screens.programCreation
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*

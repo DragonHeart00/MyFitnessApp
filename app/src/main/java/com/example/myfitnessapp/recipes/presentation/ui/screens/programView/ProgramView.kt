@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.components.screens.favoriteView
+package com.example.myfitnessapp.recipes.presentation.ui.screens.programView
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -15,8 +15,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.example.myfitnessapp.R
 
+
 @Composable
-fun FavoriteView() {
+fun MyProgramView() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -24,7 +25,7 @@ fun FavoriteView() {
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
-            text = "Favorite Screen",
+            text = "My Program Screen",
             fontWeight = FontWeight.Bold,
             color = Color.White,
             modifier = Modifier.align(Alignment.CenterHorizontally),

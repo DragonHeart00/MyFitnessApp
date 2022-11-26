@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.login
+package com.example.myfitnessapp.recipes.presentation.ui.auth
 
 import android.content.Context
 import android.widget.Toast
@@ -7,7 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myfitnessapp.login.repository.AuthRepository
+import com.example.myfitnessapp.recipes.repository.AuthRepository
 import kotlinx.coroutines.launch
 
 class LoginViewModel(

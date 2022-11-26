@@ -1,7 +1,7 @@
-package com.example.myfitnessapp.home
+package com.example.myfitnessapp.recipes.presentation.ui.screens.home
 
 import androidx.lifecycle.ViewModel
-import com.example.myfitnessapp.login.repository.AuthRepository
+import com.example.myfitnessapp.recipes.repository.AuthRepository
 
 class HomeViewModal(
     private val repository: AuthRepository = AuthRepository()

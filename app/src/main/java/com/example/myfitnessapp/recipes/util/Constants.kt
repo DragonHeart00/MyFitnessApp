@@ -15,3 +15,17 @@ const val STATE_KEY_RECIPE_ID = "recipe.state.recipe.id"
 const val STATE_KEY_RECIPE_DETAILS = "details"
  val  STATE_KEY_AUTH_TOKEN = "Token 9c8b06d329136da358c2d00e76946b0111ce2c48"
 
+object Constants {
+ //App
+ const val TAG = "AppTag"
+
+
+ //Screens
+ const val SPLASH_SCREEN = "splash_screen"
+ const val HOME_SCREEN = "home_screen"
+ const val SIGN_IN = "SignIn"
+ const val SIGN_UP = "SignUp"
+
+ //Messages
+ const val WELCOME_MESSAGE = "Welcome to our app."
+}
