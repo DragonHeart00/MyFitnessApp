@@ -8,7 +8,7 @@ import androidx.compose.material.*
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myfitnessapp.presentation.navigation.Navigation
-import com.example.myfitnessapp.presentation.ui.screens.home.HomeViewModal
+import com.example.myfitnessapp.presentation.ui.viewmodel.HomeViewModal
 import com.example.myfitnessapp.presentation.ui.auth.LoginViewModel
 import com.example.myfitnessapp.ui.theme.MyFitnessAppTheme
 import dagger.hilt.android.AndroidEntryPoint

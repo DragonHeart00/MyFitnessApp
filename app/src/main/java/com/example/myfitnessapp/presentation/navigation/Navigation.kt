@@ -18,12 +18,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.myfitnessapp.MyFitnessApp
-import com.example.myfitnessapp.presentation.ui.screens.workout.FavoriteView
 import com.example.myfitnessapp.presentation.ui.screens.profileView.ProfileView
 import com.example.myfitnessapp.presentation.ui.screens.programCreation.ProgramCreationView
 import com.example.myfitnessapp.presentation.ui.screens.programView.MyProgramView
 import com.example.myfitnessapp.presentation.ui.screens.home.Home
-import com.example.myfitnessapp.presentation.ui.screens.home.HomeViewModal
+import com.example.myfitnessapp.presentation.ui.viewmodel.HomeViewModal
 import com.example.myfitnessapp.presentation.ui.screens.splash.SplashScreen
 import com.example.myfitnessapp.presentation.ui.auth.LoginScreen
 import com.example.myfitnessapp.presentation.ui.auth.LoginViewModel
@@ -36,6 +35,7 @@ import com.example.myfitnessapp.presentation.components.navbar.EndPoints
 import com.example.myfitnessapp.presentation.components.navbar.MainActions
 import com.example.myfitnessapp.presentation.ui.screens.explore.RecipeListScreen
 import com.example.myfitnessapp.presentation.ui.screens.explore.RecipesScreen
+import com.example.myfitnessapp.presentation.ui.screens.workout.navigation.MainNavigation
 import com.example.myfitnessapp.presentation.util.RecipeEvent
 
 
@@ -121,7 +121,7 @@ fun NavigationBar(navController: NavHostController) {
     NavHost(navController, startDestination = BottomNavItem.Workouts.screen_route) {
 
         composable(BottomNavItem.Workouts.screen_route) {
-            FavoriteView()
+            MainNavigation()
         }
         composable(BottomNavItem.Explore.screen_route) {
             val status by connectivityObserver.observe().collectAsState(

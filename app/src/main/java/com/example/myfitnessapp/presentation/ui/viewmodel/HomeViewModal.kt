@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.presentation.ui.screens.home
+package com.example.myfitnessapp.presentation.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.myfitnessapp.repository.AuthRepository

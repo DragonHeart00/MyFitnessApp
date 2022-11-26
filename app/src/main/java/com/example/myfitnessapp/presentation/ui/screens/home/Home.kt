@@ -8,6 +8,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.myfitnessapp.presentation.navigation.NavigationBar
 import com.example.myfitnessapp.presentation.components.navbar.BottomNavigation
+import com.example.myfitnessapp.presentation.ui.viewmodel.HomeViewModal
 
 @Composable
 fun Home(homeViewModal: HomeViewModal, navToLoginPage: () -> Unit){
@@ -16,7 +17,6 @@ fun Home(homeViewModal: HomeViewModal, navToLoginPage: () -> Unit){
         scaffoldState = scaffoldState,
         topBar = {
             TopAppBar(
-                backgroundColor = Color.White,
                 navigationIcon = {},
                 actions = {
                     IconButton(onClick = {

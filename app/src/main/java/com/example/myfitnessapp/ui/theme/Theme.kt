@@ -20,7 +20,8 @@ import com.example.myfitnessapp.presentation.theme.*
 private val DarkColorPalette = darkColors(
     primary = Purple200,
     primaryVariant = Purple700,
-    secondary = Teal200
+    secondary = Teal200,
+    surface = graySurface
 )
 
 private val LightColorPalette = lightColors(
@@ -39,7 +40,7 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun MyFitnessAppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
+fun MyFitnessAppTheme(darkTheme: Boolean = true, content: @Composable () -> Unit) {
     val colors = if (darkTheme) {
         DarkColorPalette
     } else {
