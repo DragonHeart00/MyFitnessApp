@@ -13,9 +13,9 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.example.myfitnessapp.recipes.presentation.components.DefaultSnackbar
-import com.example.myfitnessapp.recipes.presentation.components.animation.LoadingAnimation
-import com.example.myfitnessapp.recipes.presentation.theme.*
+import com.example.myfitnessapp.presentation.components.DefaultSnackbar
+import com.example.myfitnessapp.presentation.components.animation.LoadingAnimation
+import com.example.myfitnessapp.presentation.theme.*
 
 private val DarkColorPalette = darkColors(
     primary = Purple200,
