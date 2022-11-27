@@ -28,4 +28,7 @@ object Constants {
 
  //Messages
  const val WELCOME_MESSAGE = "Welcome to our app."
+
+ //text
+
 }

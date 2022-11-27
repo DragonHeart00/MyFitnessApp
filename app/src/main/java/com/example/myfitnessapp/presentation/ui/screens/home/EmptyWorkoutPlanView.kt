@@ -1,0 +1,52 @@
+package com.example.myfitnessapp.presentation.ui.screens.exercises.screen.home
+
+import androidx.compose.foundation.layout.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.rememberLottieComposition
+import com.example.myfitnessapp.R
+import com.example.myfitnessapp.presentation.components.RegularButton
+import com.example.myfitnessapp.presentation.ui.screens.home.Heading
+import com.example.myfitnessapp.presentation.ui.screens.home.SubHeading
+
+@Preview
+@Composable
+fun EmptyWorkoutPlanView(modifier: Modifier = Modifier,user:String="", onClick: () -> Unit = {}) {
+
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.empty_workout_anim))
+
+
+    Column(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.SpaceAround,
+        horizontalAlignment = Alignment.Start
+    ) {
+
+        Heading(text = stringResource(R.string.welcome) +" "+user.replaceFirstChar { it.uppercase() })
+
+        SubHeading(text = stringResource(R.string.empty_plan_text))
+
+        LottieAnimation(
+            composition = composition,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(250.dp)
+            ,
+            iterations = Int.MAX_VALUE
+        )
+
+
+        RegularButton(text = stringResource(R.string.get_started),
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            onClick = onClick)
+
+
+    }
+}

@@ -9,6 +9,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.myfitnessapp.R
 
+val quicksand = FontFamily(
+    Font(R.font.quicksand_regular),
+    Font(R.font.quicksand_bold, FontWeight.Bold),
+    Font(R.font.quicksand_light, FontWeight.Thin)
+)
+
+
 // Set of Material typography styles to start with
 val Typography = Typography(
     body1 = TextStyle(
@@ -16,6 +23,8 @@ val Typography = Typography(
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
     )
+
+
     /* Other default text styles to override
     button = TextStyle(
         fontFamily = FontFamily.Default,
