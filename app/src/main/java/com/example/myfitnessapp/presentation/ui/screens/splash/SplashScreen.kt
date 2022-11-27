@@ -8,7 +8,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.example.myfitnessapp.presentation.navigation.Screen
+import com.example.myfitnessapp.presentation.navigation.old.Screen
 import com.example.myfitnessapp.presentation.components.animation.LottieAsset
 import kotlinx.coroutines.delay
 

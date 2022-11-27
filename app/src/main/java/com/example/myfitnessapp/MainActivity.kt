@@ -1,43 +1,67 @@
 package com.example.myfitnessapp
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.*
-import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.myfitnessapp.presentation.navigation.Navigation
-import com.example.myfitnessapp.presentation.ui.viewmodel.HomeViewModal
-import com.example.myfitnessapp.presentation.ui.auth.LoginViewModel
+import androidx.activity.viewModels
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.example.myfitnessapp.data.service.WorkoutTimerService
+import com.example.myfitnessapp.presentation.ui.screens.exercises.navigation.RootNavGraph
+import com.example.myfitnessapp.domain.util.getTimeStringFromDouble
+import com.example.myfitnessapp.presentation.ui.viewmodel.UserViewModel
+import com.example.myfitnessapp.presentation.ui.viewmodel.WorkoutViewModel
 import com.example.myfitnessapp.ui.theme.MyFitnessAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
+    lateinit var navController: NavHostController
+
+    private val userViewModel: UserViewModel by viewModels()
+    private val workoutViewModel: WorkoutViewModel by viewModels()
+    private var timeElapsed = 0.0
+    private lateinit var serviceIntent: Intent
+
+    private val updateTime: BroadcastReceiver = object : BroadcastReceiver() {
+
+        override fun onReceive(context: Context, intent: Intent) {
+            timeElapsed = intent.getDoubleExtra(WorkoutTimerService.TIME_ELAPSED, 0.0)
+            workoutViewModel.timerText = getTimeStringFromDouble(timeElapsed)
+        }
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
+        serviceIntent = Intent(this, WorkoutTimerService::class.java)
+        registerReceiver(
+            updateTime,
+            IntentFilter(WorkoutTimerService.TIMER_UPDATED)
+        )
         setContent {
-            val loginViewModel = viewModel(modelClass = LoginViewModel::class.java)
-            val homeViewModal = viewModel(modelClass = HomeViewModal ::class.java)
-            MyFitnessAppTheme {
-                // A surface container using the 'background' color from the theme
-                    Surface(
-                        modifier = Modifier.fillMaxSize(),
-                        color = MaterialTheme.colors.background
-                    ) {
-                        Navigation(
-                            loginViewModel = loginViewModel,
-                            homeViewModal = homeViewModal
-                        )
-                    }
 
+            MyFitnessAppTheme {
+
+                val workoutViewModel = hiltViewModel<WorkoutViewModel>()
+                val userViewModel = hiltViewModel<UserViewModel>()
+                navController = rememberNavController()
+                RootNavGraph(navController,userViewModel,workoutViewModel)
 
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        stopService(serviceIntent)
     }
 }
 
