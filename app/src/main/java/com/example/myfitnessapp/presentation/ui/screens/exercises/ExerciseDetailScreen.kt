@@ -81,8 +81,8 @@ fun ExerciseDetailScreen(
                     readOnly = false,
                     value = selectedExercise,
                     onValueChange = { selectedExercise = it },
-                    label = { Text(stringResource(R.string.exercise).lowercase(), color = myGreen) },
-                    textStyle = TextStyle(fontSize = 20.sp)
+                    label = { Text(stringResource(R.string.exercise).lowercase(), color = myWhite) },
+                    textStyle = TextStyle(fontSize = 20.sp, color = myWhite)
                 )
 
                 ExposedDropdownMenuBox(
@@ -95,7 +95,7 @@ fun ExerciseDetailScreen(
                         readOnly = true,
                         value = stringResource(selectedEquipment.name!!),
                         onValueChange = { },
-                        label = { Text(stringResource(R.string.equipment), color = myGreen) },
+                        label = { Text(stringResource(R.string.equipment), color = myWhite) },
                         trailingIcon = {
                             ExposedDropdownMenuDefaults.TrailingIcon(
                                 expanded = eqBoxExpanded,
@@ -107,7 +107,7 @@ fun ExerciseDetailScreen(
                             focusedTrailingIconColor = myGreen,
                             disabledTrailingIconColor = myGreen
                         ),
-                        textStyle = TextStyle(fontSize = 20.sp)
+                        textStyle = TextStyle(fontSize = 20.sp, color = myWhite)
                     )
                     ExposedDropdownMenu(
                         expanded = eqBoxExpanded,

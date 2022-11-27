@@ -65,7 +65,7 @@ fun FloatingAddButton(modifier: Modifier = Modifier, onClick: () -> Unit = {}) {
         modifier = modifier
             .clip(CircleShape)
             .size(70.dp)
-            .background(myLightBlue)
+            .background(myGreen)
             .clickable { onClick() },
         contentAlignment = Alignment.Center
     ) {
