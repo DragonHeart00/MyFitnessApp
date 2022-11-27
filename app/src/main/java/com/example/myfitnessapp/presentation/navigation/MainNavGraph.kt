@@ -131,7 +131,7 @@ fun BottomNavBar(
             modifier = Modifier
                 .graphicsLayer {
                     clip = true
-                    shape = RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp)
+
                 }
                 .height(70.dp),
 //            elevation = 10.dp,
