@@ -72,7 +72,7 @@ fun FloatingAddButton(modifier: Modifier = Modifier, onClick: () -> Unit = {}) {
         Icon(
             imageVector = Icons.Rounded.Add,
             contentDescription = null,
-            tint = myDarkBlue,
+            tint = myWhite,
             modifier = Modifier.size(40.dp)
         )
     }
