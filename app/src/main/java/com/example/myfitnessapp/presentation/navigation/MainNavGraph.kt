@@ -3,31 +3,39 @@ package com.example.myfitnessapp.presentation.navigation
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.*
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.myfitnessapp.network.internet_Connectivity.ConnectivityObserver
+import com.example.myfitnessapp.presentation.components.navbar.BottomNavItem
+import com.example.myfitnessapp.presentation.components.navbar.EndPoints
 import com.example.myfitnessapp.presentation.ui.screens.exercises.ExerciseDetailScreen
 import com.example.myfitnessapp.presentation.ui.screens.exercises.ExercisesScreen
-import com.example.myfitnessapp.presentation.ui.screens.explore.ExploreScreen
+import com.example.myfitnessapp.presentation.ui.screens.exercises.navigation.MainActions
+import com.example.myfitnessapp.presentation.ui.screens.explore.RecipeListScreen
+import com.example.myfitnessapp.presentation.ui.screens.explore.RecipesScreen
 import com.example.myfitnessapp.presentation.ui.screens.home.HomeScreen
+import com.example.myfitnessapp.presentation.ui.viewmodel.RecipeViewModel
 
 
 import com.example.myfitnessapp.presentation.ui.viewmodel.UserViewModel
 import com.example.myfitnessapp.presentation.ui.viewmodel.WorkoutViewModel
+import com.example.myfitnessapp.presentation.util.RecipeEvent
 import com.example.myfitnessapp.ui.theme.myGreen
 import com.example.myfitnessapp.ui.theme.veryDarkBlue
 
@@ -37,10 +45,13 @@ fun NavGraphBuilder.mainNavGraph(
     bottomBarState: MutableState<Boolean>,
     userViewModel: UserViewModel,
     workoutViewModel: WorkoutViewModel,
-    scaffoldState: ScaffoldState
+    scaffoldState: ScaffoldState,
+    actions: MainActions
+
 ) {
 
     navigation(startDestination = Screens.Home.route, route = MAIN_ROUTE)
+
     {
 
         composable(
@@ -54,9 +65,35 @@ fun NavGraphBuilder.mainNavGraph(
             route = Screens.Explore.route
         ) {
            //todo
-            ExploreScreen()
+           // ExploreScreen()
+
+
+
             bottomBarState.value = true
         }
+
+
+        composable(Screens.Explore.route) {
+
+
+            RecipeListScreen(navController, actions = actions)
+        }
+        //RecipesScreen
+
+        composable(
+            "${Screens.MovieDetails.route}/{id}",
+            arguments = listOf(navArgument(EndPoints.ID) { type = NavType.StringType })
+        ) {
+            val viewModel = hiltViewModel<RecipeViewModel>(it)
+            val IDINT = it.arguments?.getString(EndPoints.ID)
+                ?: throw IllegalStateException("'IDINT No' shouldn't be null")
+            viewModel.onTriggerEvent(RecipeEvent.GetRecipeEvent(IDINT.toInt()))
+
+            RecipesScreen(viewModel,navController)
+        }
+
+
+
 
         composable(
             route = Screens.Profile.route

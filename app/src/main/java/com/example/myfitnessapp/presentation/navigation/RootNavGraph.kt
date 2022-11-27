@@ -7,12 +7,15 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.myfitnessapp.presentation.components.navbar.BottomNavItem
 import com.example.myfitnessapp.presentation.navigation.*
 import com.example.myfitnessapp.presentation.ui.viewmodel.UserViewModel
 import com.example.myfitnessapp.presentation.ui.viewmodel.WorkoutViewModel
@@ -24,7 +27,9 @@ fun RootNavGraph(
     navController: NavHostController,
     userViewModel: UserViewModel = viewModel(),
     workoutViewModel: WorkoutViewModel = viewModel(),
+
 ) {
+    val actions = remember(navController) { MainActions(navController) }
 
     val bottomBarState = rememberSaveable { (mutableStateOf(false)) }
     val scaffoldState = rememberScaffoldState()
@@ -70,10 +75,25 @@ fun RootNavGraph(
                 bottomBarState,
                 userViewModel,
                 workoutViewModel,
-                scaffoldState
+                scaffoldState,
+                actions
             )
 
         }
     }
+
+}
+
+
+class MainActions(navController: NavController) {
+
+    val upPress: () -> Unit = {
+        navController.navigateUp()
+    }
+
+    val gotoRecipeDetails: (String) -> Unit = { isbnNo ->
+        navController.navigate("${Screens.MovieDetails.route}/$isbnNo")
+    }
+
 
 }

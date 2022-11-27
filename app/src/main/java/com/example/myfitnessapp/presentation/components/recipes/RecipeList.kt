@@ -9,8 +9,8 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.ScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.myfitnessapp.presentation.components.navbar.MainActions
 import com.example.myfitnessapp.domain.model.Recipe
+import com.example.myfitnessapp.presentation.ui.screens.exercises.navigation.MainActions
 import com.example.myfitnessapp.presentation.util.RecipeListEvent
 import com.example.myfitnessapp.util.PAGE_SIZE
 

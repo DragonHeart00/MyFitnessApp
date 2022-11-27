@@ -5,6 +5,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.myfitnessapp.R
+import com.example.myfitnessapp.presentation.components.navbar.BottomNavItem
 
 const val ROOT_ROUTE = "root_route"
 const val LOGIN_ROUTE = "login_route"
@@ -38,8 +39,9 @@ sealed class Screens(
     )
 
     object ExerciseDetails : Screens(route = "exercises_details_screen", title = R.string.exercise)
-    object WorkoutPlanSetUp :
-        Screens(route = "workout_plan_setup_screen", title = R.string.set_up_workout_plan_heading)
+    object WorkoutPlanSetUp : Screens(route = "workout_plan_setup_screen", title = R.string.set_up_workout_plan_heading)
+
+    object MovieDetails : Screens(route = "recipes_screen", title = R.string.recipes_screen)
 
 
 }
