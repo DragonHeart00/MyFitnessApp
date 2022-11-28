@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.presentation.ui.screens.exercises.screen.home
+package com.example.myfitnessapp.presentation.ui.screens.home
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
@@ -13,8 +13,6 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.myfitnessapp.R
 import com.example.myfitnessapp.presentation.components.RegularButton
-import com.example.myfitnessapp.presentation.ui.screens.home.Heading
-import com.example.myfitnessapp.presentation.ui.screens.home.SubHeading
 
 @Preview
 @Composable

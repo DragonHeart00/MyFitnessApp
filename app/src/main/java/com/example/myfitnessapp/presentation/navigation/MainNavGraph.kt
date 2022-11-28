@@ -30,6 +30,7 @@ import com.example.myfitnessapp.presentation.ui.screens.exercises.navigation.Mai
 import com.example.myfitnessapp.presentation.ui.screens.explore.RecipeListScreen
 import com.example.myfitnessapp.presentation.ui.screens.explore.RecipesScreen
 import com.example.myfitnessapp.presentation.ui.screens.home.HomeScreen
+import com.example.myfitnessapp.presentation.ui.screens.home.WorkoutPlanSetUpScreen
 import com.example.myfitnessapp.presentation.ui.viewmodel.RecipeViewModel
 
 
@@ -61,25 +62,9 @@ fun NavGraphBuilder.mainNavGraph(
             bottomBarState.value = true
         }
 
-        composable(
-            route = Screens.Explore.route
-        ) {
-           //todo
-           // ExploreScreen()
-
-
-
-            bottomBarState.value = true
-        }
-
-
         composable(Screens.Explore.route) {
-
-
             RecipeListScreen(navController, actions = actions)
         }
-        //RecipesScreen
-
         composable(
             "${Screens.MovieDetails.route}/{id}",
             arguments = listOf(navArgument(EndPoints.ID) { type = NavType.StringType })
@@ -92,9 +77,6 @@ fun NavGraphBuilder.mainNavGraph(
             RecipesScreen(viewModel,navController)
         }
 
-
-
-
         composable(
             route = Screens.Profile.route
         ) {
@@ -102,27 +84,6 @@ fun NavGraphBuilder.mainNavGraph(
             TODO: PROFILE SCREEN
              */
            // ProfileScreen()
-            bottomBarState.value = true
-        }
-
-        composable(
-            route = Screens.StatsDetails.route
-        ) {
-           // StatsDetailScreen(navController, workoutViewModel)
-            bottomBarState.value = true
-        }
-
-        composable(
-            route = Screens.WorkoutDetails.route
-        ) {
-           // WorkoutDetailScreen(navController, workoutViewModel)
-            bottomBarState.value = true
-        }
-
-        composable(
-            route = Screens.Workout.route
-        ) {
-            //WorkoutScreen(workoutViewModel, navController)
             bottomBarState.value = true
         }
 
@@ -137,7 +98,7 @@ fun NavGraphBuilder.mainNavGraph(
         }
 
         composable(route = Screens.WorkoutPlanSetUp.route) {
-         //   WorkoutPlanSetUpScreen(workoutViewModel = workoutViewModel, navController)
+          WorkoutPlanSetUpScreen(workoutViewModel = workoutViewModel, navController)
             bottomBarState.value = true
         }
 

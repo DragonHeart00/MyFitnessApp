@@ -8,7 +8,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.example.myfitnessapp.presentation.navigation.old.Screen
+
 import com.example.myfitnessapp.presentation.components.animation.LottieAsset
 import kotlinx.coroutines.delay
 
@@ -17,7 +17,7 @@ import kotlinx.coroutines.delay
 fun SplashScreen(navController: NavController){
     LaunchedEffect(key1 = true){
         delay(2000L)
-        navController.navigate(Screen.SignInScreen.route)
+       // navController.navigate(Screen.SignInScreen.route)
 
     }
     Column(

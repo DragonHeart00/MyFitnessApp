@@ -35,7 +35,6 @@ import com.example.myfitnessapp.presentation.navigation.Screens
 import com.example.myfitnessapp.presentation.components.CalendarDisplay
 import com.example.myfitnessapp.presentation.components.CommandsDisplay
 import com.example.myfitnessapp.presentation.components.RegularButton
-import com.example.myfitnessapp.presentation.ui.screens.exercises.screen.home.EmptyWorkoutPlanView
 import com.example.myfitnessapp.ui.theme.myDarkBlue
 import com.example.myfitnessapp.ui.theme.myGreen
 import com.example.myfitnessapp.ui.theme.myWhite
@@ -84,6 +83,12 @@ fun HomeScreen(
             ),
         color = Color.Transparent
     ) {
+        kotlin.run {
+        EmptyWorkoutPlanView(
+            modifier = Modifier.padding(horizontal = 15.dp),
+            user = user?.userName.toString(),
+            onClick = { navController.navigate(Screens.WorkoutPlanSetUp.route) })
+    }
 
         if (openDialog) {
 
@@ -127,7 +132,7 @@ fun HomeScreen(
 
                             RegularButton(text = stringResource(R.string.confirm), onClick = {
                                 deleteWorkoutPlan()
-                              //  getWorkoutPlan()
+                                //  getWorkoutPlan()
                                 openDialog = false
                             })
 
@@ -222,7 +227,7 @@ fun HomeScreen(
         }
 
 
-        userViewModel.signInState.uid?.let {
+//        userViewModel.signInState.uid?.let {
 
             state.workoutPlan?.let { workoutPlan ->
 
@@ -267,6 +272,12 @@ fun HomeScreen(
                     )
 
                     if (isWorkoutDay) {
+                        TrainingCard(
+                            modifier = Modifier.padding(horizontal = 15.dp),
+                            workoutPlan,
+                            onClick = { navController.navigate(route = Screens.WorkoutDetails.route) }
+                        )
+
                         CommandsDisplay(
                             modifier = Modifier.padding(horizontal = 15.dp),
                             iconStart = Icons.Rounded.List,
@@ -281,20 +292,21 @@ fun HomeScreen(
                             },
                             isWorkoutDay = isTodayWorkoutDay
                         )
+                    } else {
+                        RestDayView(
+                            modifier = Modifier
+                                .padding(horizontal = 15.dp)
+                                .height(370.dp)
+                        )
                     }
 
                 }
 
-            } ?: kotlin.run {
-                EmptyWorkoutPlanView(
-                    modifier = Modifier.padding(horizontal = 15.dp),
-                    user = user?.userName.toString(),
-                    onClick = { navController.navigate(Screens.WorkoutPlanSetUp.route) })
             }
         }
     }
 
-}
+//}
 
 @Composable
 fun Heading(text: String, modifier: Modifier = Modifier, color: Color = myWhite) {
