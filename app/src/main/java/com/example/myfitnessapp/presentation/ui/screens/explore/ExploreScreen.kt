@@ -15,4 +15,10 @@ fun ExploreScreen() {
         Title(text = "coming soon", modifier = Modifier.fillMaxSize())
 
     }
+
+
+
 }
+
+
+

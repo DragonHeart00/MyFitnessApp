@@ -63,6 +63,7 @@ fun BottomNavigation(navController: NavController) {
 
 
 
+/*
 class MainActions(navController: NavController) {
 
     val upPress: () -> Unit = {
@@ -76,3 +77,4 @@ class MainActions(navController: NavController) {
 
 }
 
+*/
