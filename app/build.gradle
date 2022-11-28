@@ -145,7 +145,8 @@ dependencies {
     /// Animation
     implementation "androidx.compose.animation:animation:$version"
 
-
+    // Number wheel
+    implementation "com.chargemap.compose:numberpicker:1.0.3"
     implementation "com.airbnb.android:lottie-compose:5.0.3"
 
 

@@ -1,18 +1,18 @@
 package com.example.myfitnessapp.presentation.ui.viewmodel
-
 import android.app.Application
 import android.util.Log
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myfitnessapp.data.models.*
-import com.google.firebase.firestore.ktx.toObject
-import dagger.hilt.android.lifecycle.HiltViewModel
 import com.example.myfitnessapp.data.models.states.WorkoutPlanState
-import com.example.myfitnessapp.domain.util.Resource
 import com.example.myfitnessapp.domain.WorkoutRepository
 import com.example.myfitnessapp.domain.util.DefaultWorkoutPlans
+import com.example.myfitnessapp.domain.util.Resource
 import com.example.myfitnessapp.domain.util.getTimeStringFromDouble
+import com.google.firebase.firestore.ktx.toObject
+import dagger.hilt.android.lifecycle.HiltViewModel
+
 import kotlinx.coroutines.launch
 import java.time.DayOfWeek
 import java.time.LocalDateTime
@@ -31,7 +31,7 @@ class WorkoutViewModel @Inject constructor(
         private set
 
     var userId:String by mutableStateOf("")
-    private set
+        private set
 
     var workoutPlanState by mutableStateOf(WorkoutPlanState())
         private set
@@ -75,6 +75,8 @@ class WorkoutViewModel @Inject constructor(
 
     var volumeIndex by mutableStateOf(0)
 
+//    var selectedDifficulty by mutableStateOf(Beginner)
+//        private set
 
     var selectedDays = mutableStateListOf<DayOfWeek>()
         private set
@@ -187,7 +189,9 @@ class WorkoutViewModel @Inject constructor(
         }
     }
 
-
+//    fun selectDifficulty(difficulty: DifficultyLevels.Difficulty) {
+//        selectedDifficulty = difficulty
+//    }
 
     fun selectMuscleGroup(targetGroup: List<Muscle>, name: String) {
 
@@ -317,60 +321,6 @@ class WorkoutViewModel @Inject constructor(
 
         }
 
-    fun getWorkouts() = viewModelScope.launch {
-
-        when (val result = repository.getWorkouts(userId)) {
-
-            is Resource.Success -> {
-                result.data?.let {
-
-                    val workouts = ArrayList<Workout>()
-
-                    it.documents.forEach {
-                        it.toObject<Workout>()?.let { it1 ->
-                            workouts.add(it1)
-                        }
-                    }
-                    val selectedWorkout =
-                        workouts.first { it.dayOfWeek == calendarSelection.dayOfWeek }
-
-                    workoutState = selectedWorkout
-                    workoutId = selectedWorkout.dayOfWeek.toString()
-
-                }
-            }
-
-            is Resource.Loading -> {}
-
-            is Resource.Error -> {}
-        }
-
-    }
-
-    fun updateWorkout() = viewModelScope.launch {
-
-        repository.updateWorkout(workout = ongoingWorkout, workoutId = workoutId, uid = userId)
-    }
-
-    fun addWorkoutPlan(
-        workoutPlan: WorkoutPlan = DefaultWorkoutPlans.TotalBody.workoutPlan,
-    ) =
-        viewModelScope.launch {
-
-            val workoutsList = ArrayList<Workout>()
-
-            workoutPlan.workouts?.forEach {
-                workoutsList.add(
-                    Workout(
-                        dayOfWeek = it,
-                        duration = workoutPlan.duration
-                    )
-                )
-            }
-
-            repository.addWorkoutPlan(workoutPlan, workoutsList,userId)
-        }
-
     // EXERCISE DATA
     fun getExercises() = viewModelScope.launch {
 
@@ -406,62 +356,25 @@ class WorkoutViewModel @Inject constructor(
 
     }
 
-    fun addExerciseToWorkout(exerciseName: String, equipments: Equipment, sets: Int) =
-
+    //todo
+    fun addWorkoutPlan(
+        workoutPlan: WorkoutPlan = DefaultWorkoutPlans.TotalBody.workoutPlan,
+    ) =
         viewModelScope.launch {
 
-            val exerciseItems: ArrayList<ExerciseItem> = ArrayList<ExerciseItem>()
+            val workoutsList = ArrayList<Workout>()
 
-            val volume: ArrayList<ExerciseVolume> = ArrayList()
-
-            for (i in 1..sets) {
-                volume.add(ExerciseVolume(set = i))
+            workoutPlan.workouts?.forEach {
+                workoutsList.add(
+                    Workout(
+                        dayOfWeek = it,
+                        duration = workoutPlan.duration
+                    )
+                )
             }
 
-            val exerciseItem = ExerciseItem(
-                exercise = userExercisesList.first { it.name == exerciseName },
-                name = exerciseName,
-                equipments = equipments,
-                sets = sets,
-                volume = volume
-            )
-
-            workoutState.exerciseItems?.let {
-                exerciseItems.addAll(it)
-
-            }
-
-            exerciseItems.add(exerciseItem)
-
-            val workout = Workout(
-                name = workoutState.name,
-                targetMuscleGroups = workoutState.targetMuscleGroups,
-                duration = workoutState.duration,
-                dayOfWeek = workoutState.dayOfWeek,
-                exerciseItems = exerciseItems
-            )
-
-            repository.updateWorkout(workout = workout, workoutId = workoutId, uid = userId)
-
-
+            repository.addWorkoutPlan(workoutPlan, workoutsList,userId)
         }
-
-    fun removeExercise(exerciseItem: ExerciseItem) = viewModelScope.launch {
-
-        val exercises = workoutState.exerciseItems?.minus(exerciseItem)
-
-        val workout = Workout(
-            name = workoutState.name,
-            targetMuscleGroups = workoutState.targetMuscleGroups,
-            duration = workoutState.duration,
-            dayOfWeek = workoutState.dayOfWeek,
-            exerciseItems = exercises as ArrayList<ExerciseItem>?
-        )
-
-        repository.updateWorkout(workoutId = workoutId, workout = workout, uid = userId)
-
-
-    }
 
     fun addNewExercise(exercise: Exercise) = viewModelScope.launch {
 
