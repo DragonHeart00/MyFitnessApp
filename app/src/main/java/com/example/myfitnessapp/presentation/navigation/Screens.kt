@@ -21,14 +21,13 @@ sealed class Screens(
     object Home : Screens(route = "home_screen", title = R.string.home, icon = Icons.Rounded.Home)
     object Login : Screens(route = "login_screen", title = R.string.login)
     object Signup : Screens(route = "signup_screen", title = R.string.signup)
-    object Workout : Screens(route = "workout_screen", title = R.string.workout)
+  //  object Workout : Screens(route = "workout_screen", title = R.string.workout)
     object Explore :
-        Screens(route = "explore_screen", title = R.string.explore, icon = Icons.Rounded.Analytics)
+        Screens(route = "explore_screen", title = R.string.explore, icon = Icons.Rounded.Explore)
 
-    object WorkoutDetails :
-        Screens(route = "workout_details_screen", title = R.string.workout_details)
+//    object WorkoutDetails :
+//        Screens(route = "workout_details_screen", title = R.string.workout_details)
 
-    object StatsDetails : Screens(route = "stats_details_screen", title = R.string.stats_details)
     object Profile :
         Screens(route = "profile_screen", title = R.string.profile, icon = Icons.Rounded.Person)
 

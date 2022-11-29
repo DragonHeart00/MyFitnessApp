@@ -35,10 +35,8 @@ import com.example.myfitnessapp.presentation.navigation.Screens
 import com.example.myfitnessapp.presentation.components.CalendarDisplay
 import com.example.myfitnessapp.presentation.components.CommandsDisplay
 import com.example.myfitnessapp.presentation.components.RegularButton
-import com.example.myfitnessapp.ui.theme.myDarkBlue
-import com.example.myfitnessapp.ui.theme.myGreen
-import com.example.myfitnessapp.ui.theme.myWhite
-import com.example.myfitnessapp.ui.theme.quicksand
+import com.example.myfitnessapp.ui.theme.*
+
 
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -63,6 +61,7 @@ fun HomeScreen(
     var delay by remember { mutableStateOf(true) }
     var openDialog by remember { mutableStateOf(false) }
     var openLogoutDialog by remember { mutableStateOf(false) }
+    var ui= 1
 
 
     BackHandler(true) {
@@ -83,12 +82,16 @@ fun HomeScreen(
             ),
         color = Color.Transparent
     ) {
-        kotlin.run {
-        EmptyWorkoutPlanView(
-            modifier = Modifier.padding(horizontal = 15.dp),
-            user = user?.userName.toString(),
-            onClick = { navController.navigate(Screens.WorkoutPlanSetUp.route) })
-    }
+
+        if (workoutPlanState.workoutPlan == null) {
+            kotlin.run {
+                EmptyWorkoutPlanView(
+                    modifier = Modifier.padding(horizontal = 15.dp),
+                    user = user?.userName.toString(),
+                    onClick = { navController.navigate(Screens.WorkoutPlanSetUp.route) })
+            }
+        }
+
 
         if (openDialog) {
 
@@ -225,10 +228,7 @@ fun HomeScreen(
                 }
             }
         }
-
-
-//        userViewModel.signInState.uid?.let {
-
+        if(userViewModel.signInState.uid != null){
             state.workoutPlan?.let { workoutPlan ->
 
                 var isWorkoutDay: Boolean by remember { mutableStateOf(false) }
@@ -275,23 +275,19 @@ fun HomeScreen(
                         TrainingCard(
                             modifier = Modifier.padding(horizontal = 15.dp),
                             workoutPlan,
-                            onClick = { navController.navigate(route = Screens.WorkoutDetails.route) }
+                            onClick = {  }
                         )
 
                         CommandsDisplay(
                             modifier = Modifier.padding(horizontal = 15.dp),
                             iconStart = Icons.Rounded.List,
-                            iconCenter = Icons.Rounded.PlayArrow,
                             iconEnd = Icons.Rounded.Delete,
-                            iconStartClick = {
-                                navController.navigate(route = Screens.WorkoutDetails.route)
-                            },
-                            iconCenterClick = { navController.navigate(Screens.Workout.route) },
                             iconEndClick = {
                                 openDialog = true
                             },
                             isWorkoutDay = isTodayWorkoutDay
                         )
+
                     } else {
                         RestDayView(
                             modifier = Modifier
@@ -303,10 +299,17 @@ fun HomeScreen(
                 }
 
             }
+        }else{
+
         }
+
+//        userViewModel.signInState.uid?.let {
+//
+//            ?:
+//        }
     }
 
-//}
+}
 
 @Composable
 fun Heading(text: String, modifier: Modifier = Modifier, color: Color = myWhite) {
@@ -343,7 +346,3 @@ fun Title(text: String, modifier: Modifier = Modifier, color: Color = myWhite) {
         modifier = modifier
     )
 }
-
-
-
-
