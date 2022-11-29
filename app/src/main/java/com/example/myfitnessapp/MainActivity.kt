@@ -12,7 +12,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.myfitnessapp.data.service.WorkoutTimerService
-import com.example.myfitnessapp.presentation.ui.screens.exercises.navigation.RootNavGraph
+import com.example.myfitnessapp.presentation.navigation.RootNavGraph
 import com.example.myfitnessapp.domain.util.getTimeStringFromDouble
 import com.example.myfitnessapp.presentation.ui.viewmodel.UserViewModel
 import com.example.myfitnessapp.presentation.ui.viewmodel.WorkoutViewModel

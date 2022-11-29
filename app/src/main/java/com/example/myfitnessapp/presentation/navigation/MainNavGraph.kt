@@ -3,13 +3,10 @@ package com.example.myfitnessapp.presentation.navigation
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
@@ -21,12 +18,9 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.myfitnessapp.network.internet_Connectivity.ConnectivityObserver
-import com.example.myfitnessapp.presentation.components.navbar.BottomNavItem
 import com.example.myfitnessapp.presentation.components.navbar.EndPoints
 import com.example.myfitnessapp.presentation.ui.screens.exercises.ExerciseDetailScreen
 import com.example.myfitnessapp.presentation.ui.screens.exercises.ExercisesScreen
-import com.example.myfitnessapp.presentation.ui.screens.exercises.navigation.MainActions
 import com.example.myfitnessapp.presentation.ui.screens.explore.RecipeListScreen
 import com.example.myfitnessapp.presentation.ui.screens.explore.RecipesScreen
 import com.example.myfitnessapp.presentation.ui.screens.home.HomeScreen

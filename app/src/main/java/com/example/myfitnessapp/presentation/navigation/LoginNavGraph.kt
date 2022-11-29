@@ -8,19 +8,26 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.example.myfitnessapp.presentation.ui.screens.login.LoginScreen
 import com.example.myfitnessapp.presentation.ui.screens.signup.SignUpScreen
+import com.example.myfitnessapp.presentation.ui.screens.splash.SplashScreen
 import com.example.myfitnessapp.presentation.ui.viewmodel.UserViewModel
-
+import com.example.myfitnessapp.presentation.ui.viewmodel.WorkoutViewModel
 
 
 fun NavGraphBuilder.loginNavGraph(
     navController: NavHostController,
     bottomBarState: MutableState<Boolean>,
     userViewModel: UserViewModel,
+    workoutViewModel: WorkoutViewModel,
     scaffoldState: ScaffoldState
 ) {
 
-    navigation(startDestination = Screens.Login.route, route = LOGIN_ROUTE)
+    navigation(startDestination = Screens.SplashScreen.route, route = LOGIN_ROUTE)
     {
+        composable(route = Screens.SplashScreen.route){
+            SplashScreen(navController,userViewModel)
+            //LoginScreen(navController,userViewModel,scaffoldState)
+            bottomBarState.value = false
+        }
         composable(route = Screens.Login.route){
             LoginScreen(navController,userViewModel,scaffoldState)
             bottomBarState.value = false

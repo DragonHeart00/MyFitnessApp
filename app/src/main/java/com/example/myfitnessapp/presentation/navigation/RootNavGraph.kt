@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.presentation.ui.screens.exercises.navigation
+package com.example.myfitnessapp.presentation.navigation
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -15,8 +15,6 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.myfitnessapp.presentation.components.navbar.BottomNavItem
-import com.example.myfitnessapp.presentation.navigation.*
 import com.example.myfitnessapp.presentation.ui.viewmodel.UserViewModel
 import com.example.myfitnessapp.presentation.ui.viewmodel.WorkoutViewModel
 import com.example.myfitnessapp.ui.theme.myDarkBlue
@@ -67,6 +65,7 @@ fun RootNavGraph(
                 navController = navController,
                 bottomBarState,
                 userViewModel,
+                workoutViewModel,
                 scaffoldState
             )
 

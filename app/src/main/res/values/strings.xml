@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MyFitnessApp</string>
     <string name="STATE_KEY_AUTH_TOKEN" translatable="false">Token 9c8b06d329136da358c2d00e76946b0111ce2c48</string>
+    <string name="splash">Splash</string>
     <string name="explore">Explore</string>
     <string name="dumbbells">Dumbbells</string>
     <string name="equipment">equipment</string>

@@ -9,6 +9,7 @@ import com.google.firebase.ktx.Firebase
 import com.example.myfitnessapp.data.models.User
 import com.example.myfitnessapp.domain.UserRepository
 import com.example.myfitnessapp.domain.util.Resource
+import com.google.firebase.auth.ktx.auth
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
@@ -20,6 +21,8 @@ class UserRepositoryImpl @Inject constructor(
     private val fireStoreUserCollection = Firebase.firestore.collection("users")
 
     val currentUser = auth.currentUser
+
+    override fun hasUser():Boolean = Firebase.auth.currentUser != null
 
     override suspend fun createNewUser(
         userName: String,

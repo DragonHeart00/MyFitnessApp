@@ -21,6 +21,10 @@ class UserViewModel @Inject constructor(
     private val repository: UserRepository
 ) : ViewModel() {
 
+    val hasUser:Boolean
+        get() = repository.hasUser()
+
+
     var signUpState by mutableStateOf(AuthState())
         private set
 
