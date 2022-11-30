@@ -25,6 +25,7 @@ import com.example.myfitnessapp.presentation.ui.screens.explore.RecipeListScreen
 import com.example.myfitnessapp.presentation.ui.screens.explore.RecipesScreen
 import com.example.myfitnessapp.presentation.ui.screens.home.HomeScreen
 import com.example.myfitnessapp.presentation.ui.screens.home.WorkoutPlanSetUpScreen
+import com.example.myfitnessapp.presentation.ui.screens.profile.ProfileScreen
 import com.example.myfitnessapp.presentation.ui.viewmodel.RecipeViewModel
 
 
@@ -77,7 +78,7 @@ fun NavGraphBuilder.mainNavGraph(
             /*
             TODO: PROFILE SCREEN
              */
-           // ProfileScreen()
+            ProfileScreen(navController,userViewModel ,workoutViewModel)
             bottomBarState.value = true
         }
 
