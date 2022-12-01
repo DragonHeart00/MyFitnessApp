@@ -1,7 +1,7 @@
 package com.example.myfitnessapp.domain.repository
 
 import com.google.firebase.auth.AuthResult
-import com.example.myfitnessapp.util.Resource
+import com.example.myfitnessapp.util.Response
 
 interface UserRepository {
 
@@ -9,10 +9,10 @@ interface UserRepository {
         userName: String,
         userEmailAddress: String,
         userLoginPassword: String
-    ): Resource<AuthResult>
+    ): Response<AuthResult>
 
     fun hasUser(): Boolean
-    suspend fun loginUser(email: String, password: String): Resource<AuthResult>
+    suspend fun loginUser(email: String, password: String): Response<AuthResult>
 
     suspend fun logOutUser()
 }

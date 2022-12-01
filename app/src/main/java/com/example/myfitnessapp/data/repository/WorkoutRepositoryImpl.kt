@@ -10,7 +10,7 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.example.myfitnessapp.util.Resource
+import com.example.myfitnessapp.util.Response
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
@@ -71,7 +71,7 @@ class WorkoutRepositoryImpl @Inject constructor(
         workoutPlan: WorkoutPlan,
         workouts: ArrayList<Workout>,
         uid:String
-    ): Resource<Void> {
+    ): Response<Void> {
 
         return withContext(Dispatchers.IO) {
 
@@ -91,16 +91,16 @@ class WorkoutRepositoryImpl @Inject constructor(
                 }
 
 
-                Resource.Success(result)
+                Response.Success(result)
             } catch (e: Exception) {
                 e.printStackTrace()
-                Resource.Error(e.message.toString())
+                Response.Error(e.message.toString())
             }
 
         }
     }
 
-    override suspend fun getWorkoutPlan(uid:String): Resource<QuerySnapshot> {
+    override suspend fun getWorkoutPlan(uid:String): Response<QuerySnapshot> {
         return withContext(Dispatchers.IO) {
 
             try {
@@ -109,17 +109,17 @@ class WorkoutRepositoryImpl @Inject constructor(
 
                 workoutPlanId = result?.documents?.firstOrNull()?.id
 
-                Resource.Success(result)
+                Response.Success(result)
             } catch (e: Exception) {
                 e.printStackTrace()
-                Resource.Error(e.message.toString())
+                Response.Error(e.message.toString())
 
             }
 
         }
     }
 
-    override suspend fun addWorkouts(uid:String): Resource<Void> {
+    override suspend fun addWorkouts(uid:String): Response<Void> {
         TODO("Not yet implemented")
     }
 
@@ -132,7 +132,7 @@ class WorkoutRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getHistoryData(uid:String): Resource<QuerySnapshot> {
+    override suspend fun getHistoryData(uid:String): Response<QuerySnapshot> {
 
         return withContext(Dispatchers.IO) {
 
@@ -142,11 +142,11 @@ class WorkoutRepositoryImpl @Inject constructor(
                     userCollection.document(uid).collection("exercise_history").get().await()
 
 
-                Resource.Success(result)
+                Response.Success(result)
             } catch (e: Exception) {
 
                 e.printStackTrace()
-                Resource.Error(e.message.toString())
+                Response.Error(e.message.toString())
             }
 
         }
@@ -154,7 +154,7 @@ class WorkoutRepositoryImpl @Inject constructor(
 
     }
 
-    override suspend fun getWorkouts(uid:String): Resource<QuerySnapshot> {
+    override suspend fun getWorkouts(uid:String): Response<QuerySnapshot> {
         return withContext(Dispatchers.IO) {
             try {
 
@@ -163,28 +163,28 @@ class WorkoutRepositoryImpl @Inject constructor(
                         .document(workoutPlanId!!).collection("workouts").get()
                         .await()
 
-                Resource.Success(result)
+                Response.Success(result)
 
             } catch (e: Exception) {
                 e.printStackTrace()
-                Resource.Error(e.message.toString())
+                Response.Error(e.message.toString())
             }
         }
     }
 
 
-    override suspend fun getUser(uid:String): Resource<DocumentSnapshot> {
+    override suspend fun getUser(uid:String): Response<DocumentSnapshot> {
 
         return withContext(Dispatchers.IO) {
             try {
 
                 val result = userCollection.document(uid).get().await()
 
-                Resource.Success(result)
+                Response.Success(result)
 
             } catch (e: Exception) {
                 e.printStackTrace()
-                Resource.Error(e.message!!)
+                Response.Error(e.message!!)
             }
         }
 
@@ -194,7 +194,7 @@ class WorkoutRepositoryImpl @Inject constructor(
         exerciseItem: ExerciseItem,
         workoutId: String,
         uid:String
-    ): Resource<Void> {
+    ): Response<Void> {
         return withContext(Dispatchers.IO) {
 
             try {
@@ -203,11 +203,11 @@ class WorkoutRepositoryImpl @Inject constructor(
                         .document(workoutPlanId!!).collection("workouts")
                         .document(workoutId)
                         .update("exerciseItems", FieldValue.arrayUnion(exerciseItem)).await()
-                Resource.Success(result)
+                Response.Success(result)
 
             } catch (e: Exception) {
                 e.printStackTrace()
-                Resource.Error(e.message.toString())
+                Response.Error(e.message.toString())
             }
 
         }
@@ -219,7 +219,7 @@ class WorkoutRepositoryImpl @Inject constructor(
         volume: ExerciseVolume?,
         workout: Workout,
         uid:String
-    ): Resource<Void> {
+    ): Response<Void> {
         return withContext(Dispatchers.IO) {
             try {
                 val result =
@@ -227,17 +227,17 @@ class WorkoutRepositoryImpl @Inject constructor(
                         .document(workoutPlanId!!).collection("workouts")
                         .document(workoutId).set(workout).await()
 
-                Resource.Success(result)
+                Response.Success(result)
 
             } catch (e: Exception) {
                 e.printStackTrace()
-                Resource.Error(e.message.toString())
+                Response.Error(e.message.toString())
             }
         }
     }
 
 
-    override suspend fun addNewExercise(exercise: Exercise, uid:String): Resource<Void> {
+    override suspend fun addNewExercise(exercise: Exercise, uid:String): Response<Void> {
         return withContext(Dispatchers.IO) {
             try {
 
@@ -245,11 +245,11 @@ class WorkoutRepositoryImpl @Inject constructor(
                         userCollection.document(uid).collection("exercises")
                             .document(exercise.name.toString()).set(exercise).await()
 
-                Resource.Success(result)
+                Response.Success(result)
 
             } catch (e: Exception) {
                 e.printStackTrace()
-                Resource.Error(e.message.toString())
+                Response.Error(e.message.toString())
             }
         }
     }
@@ -278,7 +278,7 @@ class WorkoutRepositoryImpl @Inject constructor(
 
     }
 
-    override suspend fun getHistoryDataDetails(exerciseId: String,uid: String): Resource<QuerySnapshot> {
+    override suspend fun getHistoryDataDetails(exerciseId: String,uid: String): Response<QuerySnapshot> {
 
         return withContext(Dispatchers.IO) {
 
@@ -286,30 +286,30 @@ class WorkoutRepositoryImpl @Inject constructor(
                 val result =
                     userCollection.document(uid).collection("exercise_history")
                         .document(exerciseId).collection("data").get().await()
-                Resource.Success(result)
+                Response.Success(result)
             } catch (e: Exception) {
                 e.printStackTrace()
                 Log.e("failed to get history data", e.message.toString())
-                Resource.Error(e.message.toString())
+                Response.Error(e.message.toString())
             }
         }
 
     }
 
-    override suspend fun getExercises(uid:String): MutableLiveData<Resource<QuerySnapshot>> {
+    override suspend fun getExercises(uid:String): MutableLiveData<Response<QuerySnapshot>> {
 
-        val data = MutableLiveData<Resource<QuerySnapshot>>()
+        val data = MutableLiveData<Response<QuerySnapshot>>()
 
             userCollection.document(uid).collection("exercises")
                 .addSnapshotListener { snapshot, error ->
 
                     snapshot?.let {
-                        data.value = Resource.Success(it)
+                        data.value = Response.Success(it)
 
                     }
 
                     error?.let {
-                        data.value = Resource.Error(it.message.toString())
+                        data.value = Response.Error(it.message.toString())
                         Log.e("Error", data.value?.message.toString())
                         return@addSnapshotListener
                     }

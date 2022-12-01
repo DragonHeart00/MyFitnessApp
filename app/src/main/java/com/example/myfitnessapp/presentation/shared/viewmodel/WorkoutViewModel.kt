@@ -8,7 +8,7 @@ import com.example.myfitnessapp.domain.models.*
 import com.example.myfitnessapp.data.states.WorkoutPlanState
 import com.example.myfitnessapp.domain.repository.WorkoutRepository
 import com.example.myfitnessapp.util.DefaultWorkoutPlans
-import com.example.myfitnessapp.util.Resource
+import com.example.myfitnessapp.util.Response
 import com.example.myfitnessapp.util.getTimeStringFromDouble
 import com.google.firebase.firestore.ktx.toObject
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -287,7 +287,7 @@ class WorkoutViewModel @Inject constructor(
 
             when (val result = repository.getWorkoutPlan(userId)) {
 
-                is Resource.Success -> {
+                is Response.Success -> {
                     result.data?.let {
                         val data = it.documents.firstOrNull()?.toObject<WorkoutPlan>()
                         workoutPlanState = workoutPlanState.copy(
@@ -304,13 +304,13 @@ class WorkoutViewModel @Inject constructor(
                     }
 
                 }
-                is Resource.Loading -> {
+                is Response.Loading -> {
                     workoutPlanState = workoutPlanState.copy(
                         workoutPlan = null,
                         loading = true
                     )
                 }
-                is Resource.Error -> {
+                is Response.Error -> {
                     workoutPlanState = workoutPlanState.copy(
                         loading = false,
                         error = result.message.toString()

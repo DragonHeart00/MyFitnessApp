@@ -9,7 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.myfitnessapp.domain.models.User
 import com.example.myfitnessapp.data.states.AuthState
 import com.example.myfitnessapp.domain.repository.UserRepository
-import com.example.myfitnessapp.util.Resource
+import com.example.myfitnessapp.util.Response
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -59,7 +59,7 @@ class UserViewModel @Inject constructor(
                 )
 
                 when (result) {
-                    is Resource.Success -> {
+                    is Response.Success -> {
                         signUpState = signUpState.copy(
                             data = result.data,
                             loading = false,
@@ -68,7 +68,7 @@ class UserViewModel @Inject constructor(
                         )
                     }
 
-                    is Resource.Error -> {
+                    is Response.Error -> {
                         signUpState = signUpState.copy(
                             data = null,
                             loading = false,
@@ -77,7 +77,7 @@ class UserViewModel @Inject constructor(
                         )
                     }
 
-                    is Resource.Loading -> {
+                    is Response.Loading -> {
                         signUpState = signUpState.copy(
                             data = null,
                             loading = true,
@@ -105,7 +105,7 @@ class UserViewModel @Inject constructor(
             val result = repository.loginUser(email = userEmail, password = userPassword)
 
             signInState = when (result) {
-                is Resource.Success -> {
+                is Response.Success -> {
                     signInState.copy(
                         loading = false,
                         success = true,
@@ -114,14 +114,14 @@ class UserViewModel @Inject constructor(
 
                 }
 
-                is Resource.Loading -> {
+                is Response.Loading -> {
                     signInState.copy(
                         loading = true,
                         success = false,
                     )
                 }
 
-                is Resource.Error -> {
+                is Response.Error -> {
                     signInState.copy(
                         loading = false,
                         success = false,

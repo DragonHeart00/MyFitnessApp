@@ -8,7 +8,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.example.myfitnessapp.domain.models.User
 import com.example.myfitnessapp.domain.repository.UserRepository
-import com.example.myfitnessapp.util.Resource
+import com.example.myfitnessapp.util.Response
 import com.google.firebase.auth.ktx.auth
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
@@ -28,7 +28,7 @@ class UserRepositoryImpl @Inject constructor(
         userName: String,
         userEmailAddress: String,
         userLoginPassword: String
-    ): Resource<AuthResult> {
+    ): Response<AuthResult> {
 
         return try {
 
@@ -43,25 +43,25 @@ class UserRepositoryImpl @Inject constructor(
             )
             fireStoreUserCollection.document(userId).set(newUser).await()
 
-            Resource.Success(registrationResult)
+            Response.Success(registrationResult)
 
         } catch (e: Exception) {
             e.printStackTrace()
-            Resource.Error(e.message.toString())
+            Response.Error(e.message.toString())
         }
 
 
     }
 
-    override suspend fun loginUser(email: String, password: String): Resource<AuthResult> {
+    override suspend fun loginUser(email: String, password: String): Response<AuthResult> {
 
         return try {
             val result = auth.signInWithEmailAndPassword(email, password).await()
             Log.e("login", "logged in user ${result.user?.uid}")
-            Resource.Success(result)
+            Response.Success(result)
         } catch (e: Exception) {
             e.printStackTrace()
-            Resource.Error(e.message.toString())
+            Response.Error(e.message.toString())
         }
 
 

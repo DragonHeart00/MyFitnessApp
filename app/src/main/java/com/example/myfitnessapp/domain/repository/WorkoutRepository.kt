@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.myfitnessapp.domain.models.*
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
-import com.example.myfitnessapp.util.Resource
+import com.example.myfitnessapp.util.Response
 
 interface WorkoutRepository {
 
@@ -13,33 +13,33 @@ interface WorkoutRepository {
         workoutPlan: WorkoutPlan,
         workouts: ArrayList<Workout>,
         uid:String
-    ): Resource<Void>
+    ): Response<Void>
 
-    suspend fun getWorkoutPlan(uid:String): Resource<QuerySnapshot>
+    suspend fun getWorkoutPlan(uid:String): Response<QuerySnapshot>
 
-    suspend fun addWorkouts(uid:String): Resource<Void>
+    suspend fun addWorkouts(uid:String): Response<Void>
 
-    suspend fun getWorkouts(uid:String): Resource<QuerySnapshot>
+    suspend fun getWorkouts(uid:String): Response<QuerySnapshot>
 
-    suspend fun getExercises(uid:String):MutableLiveData<Resource<QuerySnapshot>>
+    suspend fun getExercises(uid:String):MutableLiveData<Response<QuerySnapshot>>
 
-    suspend fun getUser(uid:String): Resource<DocumentSnapshot>
+    suspend fun getUser(uid:String): Response<DocumentSnapshot>
 
-    suspend fun addExerciseToWorkout(exerciseItem: ExerciseItem, workoutId:String, uid:String): Resource<Void>
+    suspend fun addExerciseToWorkout(exerciseItem: ExerciseItem, workoutId:String, uid:String): Response<Void>
     suspend fun updateWorkout(workoutId: String,
                               exerciseItem: ExerciseItem? = null,
                               volume: ExerciseVolume? = null,
                               workout: Workout,
                               uid:String
-    ): Resource<Void>
+    ): Response<Void>
 
-    suspend fun addNewExercise(exercise: Exercise, uid:String): Resource<Void>
+    suspend fun addNewExercise(exercise: Exercise, uid:String): Response<Void>
 
     suspend fun addExerciseHistory(exercise: ExerciseHistoryItem, uid:String)
 
-    suspend fun getHistoryData(uid:String): Resource<QuerySnapshot>
+    suspend fun getHistoryData(uid:String): Response<QuerySnapshot>
 
-    suspend fun getHistoryDataDetails(exerciseId: String,uid:String): Resource<QuerySnapshot>
+    suspend fun getHistoryDataDetails(exerciseId: String,uid:String): Response<QuerySnapshot>
     suspend fun deleteWorkoutPlan(workoutPlanId: String,uid:String)
 
 
