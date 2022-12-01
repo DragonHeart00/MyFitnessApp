@@ -18,18 +18,18 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.myfitnessapp.presentation.ui.screens.exercises.ExerciseDetailScreen
-import com.example.myfitnessapp.presentation.ui.screens.exercises.ExercisesScreen
-import com.example.myfitnessapp.presentation.ui.screens.explore.RecipeListScreen
-import com.example.myfitnessapp.presentation.ui.screens.explore.RecipesScreen
-import com.example.myfitnessapp.presentation.ui.screens.home.HomeScreen
-import com.example.myfitnessapp.presentation.ui.screens.home.WorkoutPlanSetUpScreen
-import com.example.myfitnessapp.presentation.ui.screens.profile.ProfileScreen
-import com.example.myfitnessapp.presentation.ui.viewmodel.RecipeViewModel
+import com.example.myfitnessapp.presentation.screens.exercises.ExerciseDetailScreen
+import com.example.myfitnessapp.presentation.screens.exercises.ExercisesScreen
+import com.example.myfitnessapp.presentation.screens.explore.RecipeListScreen
+import com.example.myfitnessapp.presentation.screens.explore.RecipesScreen
+import com.example.myfitnessapp.presentation.screens.home.HomeScreen
+import com.example.myfitnessapp.presentation.screens.home.WorkoutPlanSetUpScreen
+import com.example.myfitnessapp.presentation.screens.profile.ProfileScreen
+import com.example.myfitnessapp.presentation.shared.viewmodel.RecipeViewModel
 
 
-import com.example.myfitnessapp.presentation.ui.viewmodel.UserViewModel
-import com.example.myfitnessapp.presentation.ui.viewmodel.WorkoutViewModel
+import com.example.myfitnessapp.presentation.shared.viewmodel.UserViewModel
+import com.example.myfitnessapp.presentation.shared.viewmodel.WorkoutViewModel
 import com.example.myfitnessapp.util.RecipeEvent
 import com.example.myfitnessapp.ui.theme.myGreen
 import com.example.myfitnessapp.ui.theme.veryDarkBlue

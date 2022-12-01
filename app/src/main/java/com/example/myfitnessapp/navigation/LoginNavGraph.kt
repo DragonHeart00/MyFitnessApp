@@ -6,11 +6,11 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.example.myfitnessapp.presentation.ui.screens.login.LoginScreen
-import com.example.myfitnessapp.presentation.ui.screens.signup.SignUpScreen
-import com.example.myfitnessapp.presentation.ui.screens.splash.SplashScreen
-import com.example.myfitnessapp.presentation.ui.viewmodel.UserViewModel
-import com.example.myfitnessapp.presentation.ui.viewmodel.WorkoutViewModel
+import com.example.myfitnessapp.presentation.screens.login.LoginScreen
+import com.example.myfitnessapp.presentation.screens.signup.SignUpScreen
+import com.example.myfitnessapp.presentation.screens.splash.SplashScreen
+import com.example.myfitnessapp.presentation.shared.viewmodel.UserViewModel
+import com.example.myfitnessapp.presentation.shared.viewmodel.WorkoutViewModel
 
 
 fun NavGraphBuilder.loginNavGraph(

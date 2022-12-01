@@ -7,8 +7,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.myfitnessapp.navigation.RootNavGraph
-import com.example.myfitnessapp.presentation.ui.viewmodel.UserViewModel
-import com.example.myfitnessapp.presentation.ui.viewmodel.WorkoutViewModel
+import com.example.myfitnessapp.presentation.shared.viewmodel.UserViewModel
+import com.example.myfitnessapp.presentation.shared.viewmodel.WorkoutViewModel
 import com.example.myfitnessapp.ui.theme.MyFitnessAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 

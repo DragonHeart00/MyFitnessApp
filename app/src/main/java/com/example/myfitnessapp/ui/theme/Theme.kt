@@ -13,8 +13,8 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.example.myfitnessapp.presentation.components.animation.LoadingAnimation
-import com.example.myfitnessapp.presentation.components.recipes.DefaultSnackbar
+import com.example.myfitnessapp.presentation.shared.components.animation.LoadingAnimation
+import com.example.myfitnessapp.presentation.shared.components.recipes.DefaultSnackbar
 import com.example.myfitnessapp.presentation.theme.*
 
 private val DarkColorPalette = darkColors(
