@@ -22,7 +22,7 @@ fun SplashScreen(
 )  {
 
     LaunchedEffect(key1 = userViewModel?.hasUser){
-        delay(2000L)
+        delay(1000L)
         if (userViewModel.hasUser){
             navController.navigate(Screens.Home.route)
         }else {

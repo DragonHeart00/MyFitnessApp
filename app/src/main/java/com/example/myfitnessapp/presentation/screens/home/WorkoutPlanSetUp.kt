@@ -53,7 +53,7 @@ fun WorkoutPlanSetUpScreen(workoutViewModel: WorkoutViewModel, navController: Na
                     value = workoutPlanName,
                     onValueChange = { workoutPlanName = it },
                     modifier = Modifier.padding(horizontal = 5.dp),
-                    textStyle = TextStyle(fontSize = 18.sp)
+                    textStyle = TextStyle(fontSize = 18.sp, color = myWhite)
                 )
 
                 SubHeading(

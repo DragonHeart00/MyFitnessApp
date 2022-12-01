@@ -31,7 +31,7 @@ import com.example.myfitnessapp.ui.theme.*
 fun RegularButton(
     modifier: Modifier = Modifier,
     text: String = "button",
-    textColor: Color = myDarkBlue,
+    textColor: Color = myWhite,
     backgroundColor: Color = myGreen,
     onClick: () -> Unit = {}
 ) {

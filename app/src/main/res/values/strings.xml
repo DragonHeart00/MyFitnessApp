@@ -34,7 +34,7 @@
     <string name="quads">quads</string>
     <string name="empty_plan_text">You haven\'t set a workout plan yet</string>
     <string name="welcome">Welcome</string>
-    <string name="get_started">get started</string>
+    <string name="get_started">Get started</string>
     <string name="rest_view_text">take a rest.</string>
     <string name="no_sessions_text">No sessions scheduled</string>
     <string name="log">Log</string>
