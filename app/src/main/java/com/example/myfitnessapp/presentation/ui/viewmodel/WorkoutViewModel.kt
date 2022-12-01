@@ -4,12 +4,12 @@ import android.util.Log
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myfitnessapp.data.models.*
-import com.example.myfitnessapp.data.models.states.WorkoutPlanState
-import com.example.myfitnessapp.domain.WorkoutRepository
-import com.example.myfitnessapp.domain.util.DefaultWorkoutPlans
-import com.example.myfitnessapp.domain.util.Resource
-import com.example.myfitnessapp.domain.util.getTimeStringFromDouble
+import com.example.myfitnessapp.domain.models.*
+import com.example.myfitnessapp.data.states.WorkoutPlanState
+import com.example.myfitnessapp.domain.repository.WorkoutRepository
+import com.example.myfitnessapp.util.DefaultWorkoutPlans
+import com.example.myfitnessapp.util.Resource
+import com.example.myfitnessapp.util.getTimeStringFromDouble
 import com.google.firebase.firestore.ktx.toObject
 import dagger.hilt.android.lifecycle.HiltViewModel
 

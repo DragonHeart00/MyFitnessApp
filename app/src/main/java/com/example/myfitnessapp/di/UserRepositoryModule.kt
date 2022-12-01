@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import com.example.myfitnessapp.data.repository.UserRepositoryImpl
-import com.example.myfitnessapp.domain.UserRepository
+import com.example.myfitnessapp.domain.repository.UserRepository
 import javax.inject.Singleton
 
 @Module

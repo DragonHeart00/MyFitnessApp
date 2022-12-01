@@ -8,7 +8,6 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.List
-import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -31,7 +30,7 @@ import com.example.myfitnessapp.presentation.ui.viewmodel.WorkoutViewModel
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import com.example.myfitnessapp.R
-import com.example.myfitnessapp.presentation.navigation.Screens
+import com.example.myfitnessapp.navigation.Screens
 import com.example.myfitnessapp.presentation.components.CalendarDisplay
 import com.example.myfitnessapp.presentation.components.CommandsDisplay
 import com.example.myfitnessapp.presentation.components.RegularButton

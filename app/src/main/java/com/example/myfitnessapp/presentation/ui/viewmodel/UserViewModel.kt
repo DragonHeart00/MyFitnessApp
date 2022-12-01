@@ -6,10 +6,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myfitnessapp.data.models.User
-import com.example.myfitnessapp.data.models.states.AuthState
-import com.example.myfitnessapp.domain.UserRepository
-import com.example.myfitnessapp.domain.util.Resource
+import com.example.myfitnessapp.domain.models.User
+import com.example.myfitnessapp.data.states.AuthState
+import com.example.myfitnessapp.domain.repository.UserRepository
+import com.example.myfitnessapp.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

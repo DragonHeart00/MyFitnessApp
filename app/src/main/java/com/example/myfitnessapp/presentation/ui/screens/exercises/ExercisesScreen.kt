@@ -16,9 +16,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.myfitnessapp.data.models.Muscle
+import com.example.myfitnessapp.domain.models.Muscle
 import com.example.myfitnessapp.R
-import com.example.myfitnessapp.presentation.navigation.Screens
+import com.example.myfitnessapp.navigation.Screens
 import com.example.myfitnessapp.presentation.ui.screens.home.Heading
 import com.example.myfitnessapp.presentation.ui.screens.home.Title
 import com.example.myfitnessapp.presentation.ui.viewmodel.WorkoutViewModel

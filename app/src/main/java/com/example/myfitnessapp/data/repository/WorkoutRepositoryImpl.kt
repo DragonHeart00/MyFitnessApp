@@ -3,14 +3,14 @@ package com.example.myfitnessapp.data.repository
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.myfitnessapp.data.models.*
+import com.example.myfitnessapp.domain.models.*
+import com.example.myfitnessapp.domain.repository.WorkoutRepository
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.example.myfitnessapp.domain.WorkoutRepository
-import com.example.myfitnessapp.domain.util.Resource
+import com.example.myfitnessapp.util.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext

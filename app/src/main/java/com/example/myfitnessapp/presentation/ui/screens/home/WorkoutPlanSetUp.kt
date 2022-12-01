@@ -4,7 +4,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -19,9 +18,9 @@ import com.chargemap.compose.numberpicker.NumberPicker
 import com.example.myfitnessapp.presentation.ui.viewmodel.WorkoutViewModel
 import java.time.DayOfWeek
 import com.example.myfitnessapp.R
-import com.example.myfitnessapp.data.models.WorkoutPlan
+import com.example.myfitnessapp.domain.models.WorkoutPlan
 import com.example.myfitnessapp.presentation.components.RegularButton
-import com.example.myfitnessapp.presentation.navigation.Screens
+import com.example.myfitnessapp.navigation.Screens
 import com.example.myfitnessapp.ui.theme.*
 
 @Composable

@@ -3,9 +3,7 @@ package com.example.myfitnessapp.presentation.ui.screens.home
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -17,16 +15,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.example.myfitnessapp.data.models.WorkoutPlan
+import com.example.myfitnessapp.domain.models.WorkoutPlan
 import com.example.myfitnessapp.ui.theme.veryDarkBlue
 import com.example.myfitnessapp.R
-import com.example.myfitnessapp.ui.theme.myWhite
 
 @Composable
 fun TrainingCard(
