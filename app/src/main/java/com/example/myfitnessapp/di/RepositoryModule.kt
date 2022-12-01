@@ -1,9 +1,9 @@
 package com.example.myfitnessapp.di
 
-import com.example.myfitnessapp.network.RecipeService
-import com.example.myfitnessapp.network.model.RecipeDtoMapper
-import com.example.myfitnessapp.repository.RecipeRepository
-import com.example.myfitnessapp.repository.RecipeRepositoryImpl
+import com.example.myfitnessapp.data.network.RecipeService
+import com.example.myfitnessapp.data.network.model.RecipeDtoMapper
+import com.example.myfitnessapp.domain.repository.RecipeRepository
+import com.example.myfitnessapp.data.repository.RecipeRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

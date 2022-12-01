@@ -7,9 +7,9 @@ import androidx.hilt.Assisted
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myfitnessapp.domain.model.Recipe
-import com.example.myfitnessapp.presentation.util.RecipeEvent
-import com.example.myfitnessapp.repository.RecipeRepository
+import com.example.myfitnessapp.domain.models.Recipe
+import com.example.myfitnessapp.util.RecipeEvent
+import com.example.myfitnessapp.domain.repository.RecipeRepository
 import com.example.myfitnessapp.util.STATE_KEY_RECIPE_ID
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay

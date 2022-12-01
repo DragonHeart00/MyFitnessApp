@@ -11,9 +11,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.myfitnessapp.domain.model.Recipe
+import com.example.myfitnessapp.domain.models.Recipe
 import com.example.myfitnessapp.presentation.components.rating.components.RatingComponent
-import com.example.myfitnessapp.presentation.components.recipes.FoodImage
 import com.example.myfitnessapp.util.RECIPE_CARD_HEIGHT
 
 

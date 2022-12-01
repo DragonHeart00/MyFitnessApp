@@ -6,9 +6,9 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.example.myfitnessapp.data.models.User
-import com.example.myfitnessapp.domain.UserRepository
-import com.example.myfitnessapp.domain.util.Resource
+import com.example.myfitnessapp.domain.models.User
+import com.example.myfitnessapp.domain.repository.UserRepository
+import com.example.myfitnessapp.util.Resource
 import com.google.firebase.auth.ktx.auth
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject

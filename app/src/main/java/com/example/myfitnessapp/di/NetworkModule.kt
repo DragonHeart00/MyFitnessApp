@@ -2,8 +2,8 @@ package com.example.myfitnessapp.di
 
 import com.example.myfitnessapp.MyFitnessApp
 import com.example.myfitnessapp.R
-import com.example.myfitnessapp.network.RecipeService
-import com.example.myfitnessapp.network.model.RecipeDtoMapper
+import com.example.myfitnessapp.data.network.RecipeService
+import com.example.myfitnessapp.data.network.model.RecipeDtoMapper
 import com.example.myfitnessapp.util.BASE_URL
 import com.google.gson.GsonBuilder
 import dagger.Module

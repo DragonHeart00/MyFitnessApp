@@ -26,8 +26,8 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.myfitnessapp.R
-import com.example.myfitnessapp.presentation.navigation.MAIN_ROUTE
-import com.example.myfitnessapp.presentation.navigation.Screens
+import com.example.myfitnessapp.navigation.MAIN_ROUTE
+import com.example.myfitnessapp.navigation.Screens
 import com.example.myfitnessapp.presentation.components.RegularButton
 import com.example.myfitnessapp.presentation.ui.screens.home.Heading
 import com.example.myfitnessapp.presentation.ui.viewmodel.UserViewModel

@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.myfitnessapp.presentation.components.animation.LottieAsset
-import com.example.myfitnessapp.presentation.navigation.Screens
+import com.example.myfitnessapp.navigation.Screens
 import com.example.myfitnessapp.presentation.ui.viewmodel.UserViewModel
 import kotlinx.coroutines.delay
 

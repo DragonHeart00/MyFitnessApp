@@ -21,8 +21,8 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavHostController
 import com.example.myfitnessapp.R
-import com.example.myfitnessapp.data.models.Exercise
-import com.example.myfitnessapp.data.models.equipments
+import com.example.myfitnessapp.domain.models.Exercise
+import com.example.myfitnessapp.domain.models.equipments
 import com.example.myfitnessapp.presentation.components.FloatingAddButton
 import com.example.myfitnessapp.presentation.components.RegularButton
 import com.example.myfitnessapp.presentation.ui.screens.home.Heading
