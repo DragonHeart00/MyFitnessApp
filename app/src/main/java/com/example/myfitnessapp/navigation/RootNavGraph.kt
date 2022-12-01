@@ -27,10 +27,13 @@ fun RootNavGraph(
     workoutViewModel: WorkoutViewModel = viewModel(),
 
 ) {
+
+
     val actions = remember(navController) { MainActions(navController) }
 
     val bottomBarState = rememberSaveable { (mutableStateOf(false)) }
     val scaffoldState = rememberScaffoldState()
+
 
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()

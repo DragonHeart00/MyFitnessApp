@@ -18,7 +18,6 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.myfitnessapp.presentation.components.navbar.EndPoints
 import com.example.myfitnessapp.presentation.ui.screens.exercises.ExerciseDetailScreen
 import com.example.myfitnessapp.presentation.ui.screens.exercises.ExercisesScreen
 import com.example.myfitnessapp.presentation.ui.screens.explore.RecipeListScreen
@@ -34,6 +33,11 @@ import com.example.myfitnessapp.presentation.ui.viewmodel.WorkoutViewModel
 import com.example.myfitnessapp.util.RecipeEvent
 import com.example.myfitnessapp.ui.theme.myGreen
 import com.example.myfitnessapp.ui.theme.veryDarkBlue
+
+object EndPoints {
+    const val ID = "id"
+}
+
 
 
 fun NavGraphBuilder.mainNavGraph(
