@@ -17,6 +17,7 @@ class RecipeRepositoryImpl(
         )
     }
 
+    // recipe entity come from retrofit service and convert it recipe
     override suspend fun getRecipe(token: String, id: Int): Recipe {
         return mapper.mapToDomainModel(
             recipeService.getRecipe(

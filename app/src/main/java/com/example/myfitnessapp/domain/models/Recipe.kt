@@ -5,7 +5,11 @@ import kotlinx.android.parcel.Parcelize
 
 
 
-
+/*
+@Parcelize is an annotation provided by Kotlin Android Extensions
+that will automatically generate the serialization implementation
+for your custom Parcelable type at compile time
+ */
 @Parcelize
 data class Recipe(
     val id: Int? = null,

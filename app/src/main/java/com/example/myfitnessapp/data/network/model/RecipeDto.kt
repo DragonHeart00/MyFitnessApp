@@ -1,7 +1,10 @@
 package com.example.myfitnessapp.data.network.model
 
 import com.google.gson.annotations.SerializedName
-
+/*
+ will allow us to use custom names of the variables which may not match with json key.
+ the entity for modeling the data that's going to come from the network
+* */
 data class RecipeDto(
     @SerializedName("pk")
     var id: Int? = null,
