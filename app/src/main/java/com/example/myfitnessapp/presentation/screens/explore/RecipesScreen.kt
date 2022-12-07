@@ -21,18 +21,13 @@ import com.example.myfitnessapp.util.RECIPE_VIEW_HEIGHT
 import com.example.myfitnessapp.ui.theme.AppTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
-
+private const val TAG = "RecipesScreen"
 @Composable
 fun RecipesScreen(viewModel: RecipeViewModel = hiltViewModel(), navController: NavController ) {
 
-    //viewModel.onTriggerEvent(RecipeEvent.GetRecipeEvent(movieId.toInt()))
-     var isDark: Boolean = false
+
     val systemUiController = rememberSystemUiController()
     val systemBarColor = MaterialTheme.colors.background
-  //   val snackbarController = SnackbarController()
-    val allMovies = viewModel.recipe.value
-
-
     val loading = viewModel.loading.value
     val scaffoldState = rememberScaffoldState()
 
@@ -57,7 +52,7 @@ fun RecipesScreen(viewModel: RecipeViewModel = hiltViewModel(), navController: N
             AppTheme( loading, scaffoldState, Alignment.BottomCenter) {
                 val recipe = viewModel.recipe.value
 
-                Log.e("Omar", recipe.toString())
+                Log.e(TAG, recipe.toString())
 
                 Scaffold(
                     scaffoldState = scaffoldState,
@@ -71,14 +66,7 @@ fun RecipesScreen(viewModel: RecipeViewModel = hiltViewModel(), navController: N
                             ShimmerRecipeAnimation(imageHeight = RECIPE_VIEW_HEIGHT)
                         } else {
                             recipe?.let {
-                                if (it.id == 1) {
-                                   /* snackbarController.showSnackbar(
-                                        scaffoldState, "RECIPE WITH ID 1", "ERROR"
-                                    )*/
-                                } else {
-                                    RecipeView(recipe)
-
-                                }
+                                RecipeView(recipe)
                             }
                         }
                     }
