@@ -7,6 +7,8 @@ import com.example.myfitnessapp.util.DomainMapper
 // because they are tow different models so if we get data from the network we need to be able to map it to our domain model
 // if we have a domain model we need to be able to map it to a network model
 // after that we work on the actual retrofit interface for getting the data from the network
+
+
 class RecipeDtoMapper : DomainMapper<RecipeDto, Recipe> {
     override fun mapToDomainModel(model: RecipeDto): Recipe {
         return with(model) {
@@ -43,6 +45,8 @@ class RecipeDtoMapper : DomainMapper<RecipeDto, Recipe> {
         }
     }
 
+
+    //load of everyone of the recipe network entity in this list, and map each one of them using mapToDomainModel
     fun toDomainList(initial: List<RecipeDto>): List<Recipe> {
         return initial.map {
             mapToDomainModel(it)

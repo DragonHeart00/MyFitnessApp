@@ -5,6 +5,10 @@ import com.google.gson.annotations.SerializedName
  will allow us to use custom names of the variables which may not match with json key.
  the entity for modeling the data that's going to come from the network
 * */
+
+/**
+ * dto data transfer object: is an object that carries data between processes
+ */
 data class RecipeDto(
     @SerializedName("pk")
     var id: Int? = null,
