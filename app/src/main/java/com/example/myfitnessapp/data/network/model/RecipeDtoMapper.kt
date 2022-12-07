@@ -8,6 +8,7 @@ import com.example.myfitnessapp.util.DomainMapper
 // if we have a domain model we need to be able to map it to a network model
 // after that we work on the actual retrofit interface for getting the data from the network
 class RecipeDtoMapper : DomainMapper<RecipeDto, Recipe> {
+
     override fun mapToDomainModel(model: RecipeDto): Recipe {
         return with(model) {
             return@with Recipe(
@@ -26,22 +27,7 @@ class RecipeDtoMapper : DomainMapper<RecipeDto, Recipe> {
         }
     }
 
-    override fun mapFromDomainModel(domainModel: Recipe): RecipeDto {
-        return with(domainModel) {
-            return@with RecipeDto(
-                id, title,
-                publisher,
-                featuredImage,
-                rating,
-                sourceUrl,
-                description,
-                cookingInstructions,
-                ingredients,
-                dateAdded,
-                dateUpdated
-            )
-        }
-    }
+
 
     fun toDomainList(initial: List<RecipeDto>): List<Recipe> {
         return initial.map {
@@ -49,9 +35,5 @@ class RecipeDtoMapper : DomainMapper<RecipeDto, Recipe> {
         }
     }
 
-    fun fromDomainList(initial: List<Recipe>): List<RecipeDto> {
-        return initial.map {
-            mapFromDomainModel(it)
-        }
-    }
+
 }

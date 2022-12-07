@@ -42,6 +42,7 @@ class RecipeListViewModel @Inject constructor(
 
     }
 
+
     fun onTriggerEvent(event: RecipeListEvent) {
         viewModelScope.launch {
             try {
