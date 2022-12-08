@@ -29,11 +29,15 @@ import com.example.myfitnessapp.presentation.screens.home.Heading
 import com.example.myfitnessapp.presentation.screens.home.SubHeading
 import com.example.myfitnessapp.presentation.shared.viewmodel.WorkoutViewModel
 import com.example.myfitnessapp.ui.theme.myDarkBlue
-import com.example.myfitnessapp.ui.theme.myGreen
+import com.example.myfitnessapp.ui.theme.bluev2
 import com.example.myfitnessapp.ui.theme.myLightBlue
 import com.example.myfitnessapp.ui.theme.myWhite
 
-
+/**
+ * Allows use of an opt-in API denoted by the given markers in the annotated file,
+ * declaration, or expression. If a declaration is annotated with OptIn,
+ * its usages are not required to opt-in to that API.
+ **/
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ExerciseDetailScreen(
@@ -45,11 +49,16 @@ fun ExerciseDetailScreen(
     getExercises()
 
     val heading = selectedMuscleGroup
-
     val exercises = filteredExerciseList
 
+    /**
+     * remember: keeps a value (any value) consistent across recompositions.
+     * mutableStateOf returns a MutableState
+     * Think mutableListOf.
+     * MutableState is just a thing that holds a value,
+     * where Compose will automatically observe changes to the value
+     */
     var openDialog by remember { mutableStateOf(false) }
-
     var selectedExercise by remember { mutableStateOf("") }
 
     LaunchedEffect(key1 = openDialog, block = {getExercises()})
@@ -103,9 +112,9 @@ fun ExerciseDetailScreen(
                                 )
                         },
                         colors = ExposedDropdownMenuDefaults.textFieldColors(
-                            trailingIconColor = myGreen,
-                            focusedTrailingIconColor = myGreen,
-                            disabledTrailingIconColor = myGreen
+                            trailingIconColor = bluev2,
+                            focusedTrailingIconColor = bluev2,
+                            disabledTrailingIconColor = bluev2
                         ),
                         textStyle = TextStyle(fontSize = 20.sp, color = myWhite)
                     )
@@ -215,7 +224,7 @@ fun ExerciseItem(exercise: Exercise, modifier: Modifier = Modifier) {
         Icon(
             imageVector = Icons.Rounded.KeyboardArrowRight,
             contentDescription = null,
-            tint = myGreen,
+            tint = bluev2,
             modifier = Modifier.size(50.dp)
         )
 

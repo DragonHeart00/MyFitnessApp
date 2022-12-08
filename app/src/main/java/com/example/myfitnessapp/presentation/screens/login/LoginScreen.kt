@@ -83,7 +83,7 @@ fun LoginScreen(
 
                 ) {
                 CircularProgressIndicator(
-                    color = myGreen,
+                    color = bluev2,
                     strokeWidth = 5.dp,
                 )
             }
@@ -208,7 +208,7 @@ fun SignUpRow(modifier: Modifier = Modifier) {
         Text(
             text = stringResource(R.string.sign_up),
             fontWeight = FontWeight.Bold,
-            color = myGreen,
+            color = bluev2,
             fontFamily = quicksand
         )
     }

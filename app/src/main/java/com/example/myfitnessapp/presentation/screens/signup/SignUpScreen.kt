@@ -24,7 +24,7 @@ import com.example.myfitnessapp.presentation.shared.components.RegularButton
 import com.example.myfitnessapp.presentation.screens.home.Heading
 import com.example.myfitnessapp.presentation.screens.login.InputField
 import com.example.myfitnessapp.presentation.shared.viewmodel.UserViewModel
-import com.example.myfitnessapp.ui.theme.myGreen
+import com.example.myfitnessapp.ui.theme.bluev2
 import com.example.myfitnessapp.ui.theme.text
 
 @Composable
@@ -76,7 +76,7 @@ fun SignUpScreen(
 
                     ) {
                     CircularProgressIndicator(
-                        color = myGreen.copy(0.6f),
+                        color = bluev2.copy(0.6f),
                         strokeWidth = 5.dp,
                     )
                 }

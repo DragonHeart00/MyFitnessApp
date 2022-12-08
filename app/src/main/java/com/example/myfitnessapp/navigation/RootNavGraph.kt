@@ -94,7 +94,7 @@ class MainActions(navController: NavController) {
     }
 
     val gotoRecipeDetails: (String) -> Unit = { isbnNo ->
-        navController.navigate("${Screens.MovieDetails.route}/$isbnNo")
+        navController.navigate("${Screens.RecipeDetails.route}/$isbnNo")
     }
 
 

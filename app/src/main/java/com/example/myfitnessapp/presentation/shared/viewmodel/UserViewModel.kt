@@ -14,6 +14,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * @HiltViewModel
+ * we can access it from anywhere in the code.
+ * All we need to do is specify what type of ViewModel we want,
+ * and call the method hiltViewModel()
+ */
 
 @HiltViewModel
 class UserViewModel @Inject constructor(

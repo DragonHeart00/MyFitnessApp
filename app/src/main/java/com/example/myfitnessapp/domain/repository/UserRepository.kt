@@ -5,11 +5,7 @@ import com.example.myfitnessapp.util.Response
 
 interface UserRepository {
 
-    suspend fun createNewUser(
-        userName: String,
-        userEmailAddress: String,
-        userLoginPassword: String
-    ): Response<AuthResult>
+    suspend fun createNewUser(userName: String, userEmailAddress: String, userLoginPassword: String): Response<AuthResult>
 
     fun hasUser(): Boolean
     suspend fun loginUser(email: String, password: String): Response<AuthResult>

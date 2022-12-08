@@ -6,6 +6,11 @@ import android.content.Context
 import androidx.compose.runtime.mutableStateOf
 import dagger.hilt.android.HiltAndroidApp
 
+/**
+ * generate top level component: generates a base class for your application that uses those generated components
+ * Because the code generation needs access to all of your modules
+ */
+
 @HiltAndroidApp
 class MyFitnessApp : Application(){
 

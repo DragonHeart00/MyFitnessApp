@@ -16,7 +16,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myfitnessapp.ui.theme.myDarkBlue
-import com.example.myfitnessapp.ui.theme.myGreen
+import com.example.myfitnessapp.ui.theme.bluev2
 
 @Preview
 @Composable
@@ -45,7 +45,7 @@ fun CommandsDisplay(
                 .align(Alignment.Top)
                 .clickable { iconStartClick() },
             elevation = 4.dp,
-            color = myGreen
+            color = bluev2
         ) {
             Icon(
                 imageVector = iconStart,
@@ -64,7 +64,7 @@ fun CommandsDisplay(
                     .height(95.dp)
                     .clickable { iconCenterClick() },
                 elevation = 4.dp,
-                color = myGreen
+                color = bluev2
             ) {
 
                 Column(
@@ -90,7 +90,7 @@ fun CommandsDisplay(
                 .align(Alignment.Top)
                 .clickable { iconEndClick() },
             elevation = 4.dp,
-            color = myGreen
+            color = bluev2
         ) {
 
             Icon(

@@ -32,7 +32,7 @@ fun RegularButton(
     modifier: Modifier = Modifier,
     text: String = "button",
     textColor: Color = myWhite,
-    backgroundColor: Color = myGreen,
+    backgroundColor: Color = bluev2,
     onClick: () -> Unit = {}
 ) {
 
@@ -65,7 +65,7 @@ fun FloatingAddButton(modifier: Modifier = Modifier, onClick: () -> Unit = {}) {
         modifier = modifier
             .clip(CircleShape)
             .size(70.dp)
-            .background(myGreen)
+            .background(bluev2)
             .clickable { onClick() },
         contentAlignment = Alignment.Center
     ) {

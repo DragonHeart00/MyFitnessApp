@@ -19,12 +19,8 @@ sealed class Screens(
     object Home : Screens(route = "home_screen", title = R.string.home, icon = Icons.Rounded.Home)
     object Login : Screens(route = "login_screen", title = R.string.login)
     object Signup : Screens(route = "signup_screen", title = R.string.signup)
-  //  object Workout : Screens(route = "workout_screen", title = R.string.workout)
     object Explore :
         Screens(route = "explore_screen", title = R.string.explore, icon = Icons.Rounded.Explore)
-
-//    object WorkoutDetails :
-//        Screens(route = "workout_details_screen", title = R.string.workout_details)
 
     object Profile :
         Screens(route = "profile_screen", title = R.string.profile, icon = Icons.Rounded.Person)
@@ -38,7 +34,7 @@ sealed class Screens(
     object ExerciseDetails : Screens(route = "exercises_details_screen", title = R.string.exercise)
     object WorkoutPlanSetUp : Screens(route = "workout_plan_setup_screen", title = R.string.set_up_workout_plan_heading)
 
-    object MovieDetails : Screens(route = "recipes_screen", title = R.string.recipes_screen)
+    object RecipeDetails : Screens(route = "recipes_screen", title = R.string.recipes_screen)
 
 
 }

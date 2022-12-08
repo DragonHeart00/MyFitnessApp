@@ -36,7 +36,7 @@ import com.example.myfitnessapp.presentation.shared.components.CommandsDisplay
 import com.example.myfitnessapp.presentation.shared.components.RegularButton
 import com.example.myfitnessapp.ui.theme.*
 
-
+//Scaffold allows you to implement a UI with the basic Material Design layout structure.
 
 @OptIn(ExperimentalComposeUiApi::class)
 @SuppressLint("CoroutineCreationDuringComposition")
@@ -117,7 +117,7 @@ fun HomeScreen(
                         verticalArrangement = Arrangement.SpaceAround
                     ) {
 
-                        SubHeading(text = stringResource(R.string.delete_workout_plan), color = myGreen)
+                        SubHeading(text = stringResource(R.string.delete_workout_plan), color = bluev2)
 
                         Title(
                             text = stringResource(R.string.data_deletion_alert_text),
@@ -177,7 +177,7 @@ fun HomeScreen(
                         verticalArrangement = Arrangement.SpaceAround
                     ) {
 
-                        SubHeading(text = stringResource(R.string.logout), color = myGreen)
+                        SubHeading(text = stringResource(R.string.logout), color = bluev2)
 
                         Title(
                             text = stringResource(R.string.logout_alert_text),

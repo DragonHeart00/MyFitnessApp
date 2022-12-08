@@ -95,7 +95,7 @@ fun WorkoutPlanSetUpScreen(workoutViewModel: WorkoutViewModel, navController: Na
                         onValueChange = { duration = it },
                         range = 10..120,
                         textStyle = TextStyle(color = myWhite),
-                        dividersColor = myGreen,
+                        dividersColor = bluev2,
                         modifier = Modifier.width(100.dp)
                     )
                     Title(text = stringResource(R.string.minutes))
@@ -138,7 +138,7 @@ fun WeekdaysChipItem(
     }
     var backgroundColor by remember { mutableStateOf(myLightBlue) }
 
-    backgroundColor = if (checked) myGreen else veryDarkBlue.copy(0.6f)
+    backgroundColor = if (checked) bluev2 else veryDarkBlue.copy(0.6f)
 
     var textColor by remember {
         mutableStateOf(Color.Black)

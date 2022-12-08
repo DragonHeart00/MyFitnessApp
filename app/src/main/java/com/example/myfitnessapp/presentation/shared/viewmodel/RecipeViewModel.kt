@@ -20,7 +20,12 @@ import javax.inject.Named
 
 private const val TAG = "RecipeViewModel"
 
-
+/**
+ * @HiltViewModel
+ * we can access it from anywhere in the code.
+ * All we need to do is specify what type of ViewModel we want,
+ * and call the method hiltViewModel()
+ */
 
 @HiltViewModel
 class RecipeViewModel @Inject constructor(

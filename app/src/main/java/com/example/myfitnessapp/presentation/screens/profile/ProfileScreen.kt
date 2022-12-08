@@ -33,7 +33,7 @@ import com.example.myfitnessapp.presentation.screens.home.Title
 import com.example.myfitnessapp.presentation.shared.viewmodel.UserViewModel
 import com.example.myfitnessapp.presentation.shared.viewmodel.WorkoutViewModel
 import com.example.myfitnessapp.ui.theme.myDarkBlue
-import com.example.myfitnessapp.ui.theme.myGreen
+import com.example.myfitnessapp.ui.theme.bluev2
 import com.example.myfitnessapp.ui.theme.myWhite
 
 
@@ -133,7 +133,7 @@ fun ProfileScreen
                     verticalArrangement = Arrangement.SpaceAround
                 ) {
 
-                    SubHeading(text = stringResource(R.string.logout), color = myGreen)
+                    SubHeading(text = stringResource(R.string.logout), color = bluev2)
 
                     Title(
                         text = stringResource(R.string.logout_alert_text),

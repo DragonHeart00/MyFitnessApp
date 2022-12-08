@@ -119,58 +119,8 @@ class WorkoutRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun addWorkouts(uid:String): Response<Void> {
-        TODO("Not yet implemented")
-    }
-
-    fun editWorkout(uid:String) {
-        workoutPlanId?.let {
-
-            userCollection.document(uid).collection("workout_plan")
-                .document(it).collection("workouts").document("workoutId")
-                .update("exerciseItems", FieldValue.arrayUnion())
-        }
-    }
-
-    override suspend fun getHistoryData(uid:String): Response<QuerySnapshot> {
-
-        return withContext(Dispatchers.IO) {
-
-            try {
-
-                val result =
-                    userCollection.document(uid).collection("exercise_history").get().await()
 
 
-                Response.Success(result)
-            } catch (e: Exception) {
-
-                e.printStackTrace()
-                Response.Error(e.message.toString())
-            }
-
-        }
-
-
-    }
-
-    override suspend fun getWorkouts(uid:String): Response<QuerySnapshot> {
-        return withContext(Dispatchers.IO) {
-            try {
-
-                val result =
-                    userCollection.document(uid).collection("workout_plan")
-                        .document(workoutPlanId!!).collection("workouts").get()
-                        .await()
-
-                Response.Success(result)
-
-            } catch (e: Exception) {
-                e.printStackTrace()
-                Response.Error(e.message.toString())
-            }
-        }
-    }
 
 
     override suspend fun getUser(uid:String): Response<DocumentSnapshot> {
@@ -190,51 +140,6 @@ class WorkoutRepositoryImpl @Inject constructor(
 
     }
 
-    override suspend fun addExerciseToWorkout(
-        exerciseItem: ExerciseItem,
-        workoutId: String,
-        uid:String
-    ): Response<Void> {
-        return withContext(Dispatchers.IO) {
-
-            try {
-                val result =
-                    userCollection.document(uid).collection("workout_plan")
-                        .document(workoutPlanId!!).collection("workouts")
-                        .document(workoutId)
-                        .update("exerciseItems", FieldValue.arrayUnion(exerciseItem)).await()
-                Response.Success(result)
-
-            } catch (e: Exception) {
-                e.printStackTrace()
-                Response.Error(e.message.toString())
-            }
-
-        }
-    }
-
-    override suspend fun updateWorkout(
-        workoutId: String,
-        exerciseItem: ExerciseItem?,
-        volume: ExerciseVolume?,
-        workout: Workout,
-        uid:String
-    ): Response<Void> {
-        return withContext(Dispatchers.IO) {
-            try {
-                val result =
-                    userCollection.document(uid).collection("workout_plan")
-                        .document(workoutPlanId!!).collection("workouts")
-                        .document(workoutId).set(workout).await()
-
-                Response.Success(result)
-
-            } catch (e: Exception) {
-                e.printStackTrace()
-                Response.Error(e.message.toString())
-            }
-        }
-    }
 
 
     override suspend fun addNewExercise(exercise: Exercise, uid:String): Response<Void> {
@@ -254,47 +159,8 @@ class WorkoutRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun addExerciseHistory(exercise: ExerciseHistoryItem, uid:String) {
-
-        val sdf = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.ENGLISH)
-        val date = sdf.format(exercise.date).toString()
 
 
-        userCollection.document(uid).collection("exercise_history")
-            .document(exercise.exercise?.name.toString())
-            .set(Exercise(name = exercise.exercise?.name.toString())).addOnCompleteListener {
-
-                if (it.isSuccessful) {
-
-                    userCollection.document(uid).collection("exercise_history")
-                        .document(exercise.exercise?.name.toString())
-                        .collection("data")
-                        .document(date)
-                        .set(exercise)
-                }
-
-            }.await()
-
-
-    }
-
-    override suspend fun getHistoryDataDetails(exerciseId: String,uid: String): Response<QuerySnapshot> {
-
-        return withContext(Dispatchers.IO) {
-
-            try {
-                val result =
-                    userCollection.document(uid).collection("exercise_history")
-                        .document(exerciseId).collection("data").get().await()
-                Response.Success(result)
-            } catch (e: Exception) {
-                e.printStackTrace()
-                Log.e("failed to get history data", e.message.toString())
-                Response.Error(e.message.toString())
-            }
-        }
-
-    }
 
     override suspend fun getExercises(uid:String): MutableLiveData<Response<QuerySnapshot>> {
 

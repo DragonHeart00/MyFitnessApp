@@ -91,7 +91,7 @@ fun CalendarDisplayItem(
         mutableStateOf(myLightBlue)
     }
 
-    surfaceColor = if (isSelected) myGreen else myLightBlue
+    surfaceColor = if (isSelected) bluev2 else myLightBlue
 
     var textColor by remember {
         mutableStateOf(myWhite)

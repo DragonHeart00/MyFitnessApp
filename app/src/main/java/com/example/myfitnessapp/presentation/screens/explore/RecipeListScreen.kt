@@ -24,7 +24,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun RecipeListScreen(navController: NavHostController, actions: MainActions, viewModel: RecipeListViewModel = hiltViewModel()) {
-
+    //function which returns an instance for the current system
     val systemUiController = rememberSystemUiController()
     val systemBarColor = MaterialTheme.colors.primary
 

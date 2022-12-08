@@ -21,6 +21,13 @@ import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
+/**
+ * @HiltViewModel
+ * we can access it from anywhere in the code.
+ * All we need to do is specify what type of ViewModel we want,
+ * and call the method hiltViewModel()
+ */
+
 @HiltViewModel
 class WorkoutViewModel @Inject constructor(
     private val app: Application,
@@ -36,14 +43,9 @@ class WorkoutViewModel @Inject constructor(
     var workoutPlanState by mutableStateOf(WorkoutPlanState())
         private set
 
-    var workoutId by mutableStateOf("")
-        private set
-
     var workoutDay by mutableStateOf("Today's session")
         private set
 
-    var workoutState by mutableStateOf(Workout())
-        private set
 
     var calendarSelection: LocalDateTime by mutableStateOf(LocalDateTime.now())
         private set
@@ -59,9 +61,6 @@ class WorkoutViewModel @Inject constructor(
     var userExercisesList by mutableStateOf(exercises())
         private set
 
-    var currentSetItemIndex by mutableStateOf(0)
-        private set
-
     var ongoingWorkout by mutableStateOf(Workout())
         private set
 
@@ -69,33 +68,9 @@ class WorkoutViewModel @Inject constructor(
 
     var timeElapsed by mutableStateOf(0.0)
 
-    var timerText by mutableStateOf(getTimeStringFromDouble(timeElapsed))
-
-    var selectedSetItem by mutableStateOf(ExerciseVolume())
-
-    var volumeIndex by mutableStateOf(0)
-
-//    var selectedDifficulty by mutableStateOf(Beginner)
-//        private set
-
     var selectedDays = mutableStateListOf<DayOfWeek>()
         private set
 
-    var currentExerciseId by mutableStateOf("")
-
-    var statsExercises = mutableStateListOf<String>()
-        private set
-
-    var chartData = mutableStateListOf<Double>()
-    var historyData = mutableStateListOf<ExerciseHistoryItem>()
-
-    var currentExercise by
-    if (isWorkoutStarted) mutableStateOf(ongoingWorkout.exerciseItems?.get(0)) else mutableStateOf(
-        workoutState.exerciseItems?.get(
-            0
-        )
-    )
-        private set
 
     fun addDay(day: DayOfWeek) {
         selectedDays.add(day)
@@ -105,93 +80,7 @@ class WorkoutViewModel @Inject constructor(
         selectedDays.remove(day)
     }
 
-    fun startWorkout() {
-        ongoingWorkout = workoutState.copy()
 
-        isWorkoutStarted = true
-    }
-
-    fun stopWorkout() {
-        isWorkoutStarted = false
-
-        ongoingWorkout.exerciseItems?.forEach {
-            val historyItem = ExerciseHistoryItem(
-                exercise = it.exercise,
-                exerciseVolume = it.volume,
-            )
-
-            viewModelScope.launch {
-                repository.addExerciseHistory(historyItem,userId)
-            }
-        }
-    }
-
-    fun addSetItem() {
-        val newItem = currentExercise?.volume?.plus(ExerciseVolume())
-        currentExercise = currentExercise?.copy(
-            volume = newItem as ArrayList<ExerciseVolume>?
-        )
-        ongoingWorkout.exerciseItems?.set(currentSetItemIndex, currentExercise!!)
-    }
-
-    fun editSetItem(weight: Double, reps: Int) {
-
-        ongoingWorkout.exerciseItems?.let {
-            it[currentSetItemIndex].volume?.set(
-                volumeIndex, ExerciseVolume(
-                    weight = weight,
-                    reps = reps
-                )
-            )
-        }
-
-    }
-
-    @Suppress("UNCHECKED_CAST")
-    fun removeSetItem(index: Int) {
-
-        val element = currentExercise?.volume?.get(index)
-
-        val newItem = currentExercise?.volume?.minus(element)
-        currentExercise = currentExercise?.copy(
-            volume = newItem as ArrayList<ExerciseVolume>?
-        )
-        ongoingWorkout.exerciseItems?.set(currentSetItemIndex, currentExercise!!)
-
-    }
-
-    fun getFirstExercise() {
-        val workout = if (isWorkoutStarted) ongoingWorkout else workoutState
-        workout.exerciseItems?.let {
-            if (it.size > 0)
-                currentExercise = it[0]
-        }
-    }
-
-    fun getNextExercise() {
-        val workout = if (isWorkoutStarted) ongoingWorkout else workoutState
-        workout.exerciseItems?.let {
-            if (currentSetItemIndex < it.size - 1) {
-                currentSetItemIndex++
-                currentExercise = it[currentSetItemIndex]
-            }
-        }
-
-    }
-
-    fun getPreviousExercise() {
-        val workout = if (isWorkoutStarted) ongoingWorkout else workoutState
-        workout.exerciseItems?.let {
-            if (currentSetItemIndex > 0) {
-                currentSetItemIndex--
-                currentExercise = it[currentSetItemIndex]
-            }
-        }
-    }
-
-//    fun selectDifficulty(difficulty: DifficultyLevels.Difficulty) {
-//        selectedDifficulty = difficulty
-//    }
 
     fun selectMuscleGroup(targetGroup: List<Muscle>, name: String) {
 
@@ -213,56 +102,6 @@ class WorkoutViewModel @Inject constructor(
             userData.data?.let {
                 user = it.toObject<User>()
 
-            }
-        }
-    }
-
-    // HISTORY DATA
-    fun getHistoryData() {
-        viewModelScope.launch {
-
-            val result = repository.getHistoryData(userId)
-            val exercises = ArrayList<String>()
-            result.data?.let {
-                it.documents.forEach {
-                    exercises.add(it.id)
-                    Log.e("history", it.id)
-                }
-                statsExercises = exercises.toMutableStateList()
-
-            }
-        }
-    }
-
-    fun getHistoryDataDetails() {
-
-        viewModelScope.launch {
-            val result = repository.getHistoryDataDetails(currentExerciseId,userId)
-
-            result.data?.let {
-                val dataList = ArrayList<Double>()
-                val historyItems = ArrayList<ExerciseHistoryItem>()
-                it.documents.forEach { doc ->
-
-                    val docData = doc.toObject<ExerciseHistoryItem>()
-
-                    docData?.let { item ->
-                        historyItems.add(item)
-
-                    }
-                }
-
-                historyItems.sortedBy { it.date }
-
-                historyData = historyItems.toMutableStateList()
-
-                historyItems.forEach {
-
-                    dataList.add(it.maxWeight!!)
-
-                }
-
-                chartData = dataList.toMutableStateList()
             }
         }
     }

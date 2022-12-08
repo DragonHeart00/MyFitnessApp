@@ -15,6 +15,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
 import javax.inject.Singleton
 
+/**
+ * Providing Retrofit instance and repository
+ */
+
+/**
+ * now this is declared as a dependency and we can inject it
+ */
+
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {

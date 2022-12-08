@@ -31,7 +31,7 @@ import com.example.myfitnessapp.presentation.shared.viewmodel.RecipeViewModel
 import com.example.myfitnessapp.presentation.shared.viewmodel.UserViewModel
 import com.example.myfitnessapp.presentation.shared.viewmodel.WorkoutViewModel
 import com.example.myfitnessapp.util.RecipeEvent
-import com.example.myfitnessapp.ui.theme.myGreen
+import com.example.myfitnessapp.ui.theme.bluev2
 import com.example.myfitnessapp.ui.theme.veryDarkBlue
 
 object EndPoints {
@@ -65,7 +65,7 @@ fun NavGraphBuilder.mainNavGraph(
             RecipeListScreen(navController, actions = actions)
         }
         composable(
-            "${Screens.MovieDetails.route}/{id}",
+            "${Screens.RecipeDetails.route}/{id}",
             arguments = listOf(navArgument(EndPoints.ID) { type = NavType.StringType })
         ) {
             val viewModel = hiltViewModel<RecipeViewModel>(it)
@@ -131,8 +131,7 @@ fun BottomNavBar(
 
                 }
                 .height(70.dp),
-//            elevation = 10.dp,
-            backgroundColor = myGreen,
+            backgroundColor = bluev2,
 
 
             ) {

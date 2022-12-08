@@ -20,12 +20,22 @@ import javax.inject.Named
 
 private const val TAG = "RecipeListViewModel"
 
+/**
+ * @HiltViewModel
+ * we can access it from anywhere in the code.
+ * All we need to do is specify what type of ViewModel we want,
+ * and call the method hiltViewModel()
+ */
 @HiltViewModel
 class RecipeListViewModel @Inject constructor(
     private val repository: RecipeRepository,
     @Named("auth_token") private val token: String,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
+    //Mutable state is state that can be changed after you make the object
+    /**
+     * mutableStateOf(): it's an observable that observes the values when underlaying values gets changes and updates the UI.
+     */
     val recipes: MutableState<List<Recipe>> = mutableStateOf(listOf())
     val query = mutableStateOf("")
     val loading: MutableState<Boolean> = mutableStateOf(false)
