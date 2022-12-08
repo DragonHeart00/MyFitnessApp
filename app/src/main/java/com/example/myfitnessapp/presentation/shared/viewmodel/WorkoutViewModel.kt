@@ -61,12 +61,7 @@ class WorkoutViewModel @Inject constructor(
     var userExercisesList by mutableStateOf(exercises())
         private set
 
-    var ongoingWorkout by mutableStateOf(Workout())
-        private set
 
-    var isWorkoutStarted by mutableStateOf(false)
-
-    var timeElapsed by mutableStateOf(0.0)
 
     var selectedDays = mutableStateListOf<DayOfWeek>()
         private set
@@ -160,7 +155,10 @@ class WorkoutViewModel @Inject constructor(
 
         }
 
-    // EXERCISE DATA
+    /**
+     * Any coroutine launched in this scope is automatically canceled if the ViewModel is cleared
+     * Coroutines are useful here for when you have work that needs to be done only if the ViewModel is active
+     */
     fun getExercises() = viewModelScope.launch {
 
         val muscleGroup = muscleGroup.toList()

@@ -6,6 +6,10 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
 import com.example.myfitnessapp.util.Response
 
+/**
+ * An interface defines the repository with all logical
+ * read and write operations for a specific entity.
+ */
 interface WorkoutRepository {
 
     //suspend pauses the execution of the current coroutine, saving all local variables.

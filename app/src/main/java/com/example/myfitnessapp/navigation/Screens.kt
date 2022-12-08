@@ -6,6 +6,10 @@ import androidx.compose.material.icons.rounded.*
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.myfitnessapp.R
 
+/**
+ * A navigation graph defines all possible routes into the application
+ *
+ */
 const val ROOT_ROUTE = "root_route"
 const val LOGIN_ROUTE = "login_route"
 const val MAIN_ROUTE = "main_route"
