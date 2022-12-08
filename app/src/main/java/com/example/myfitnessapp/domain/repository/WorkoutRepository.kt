@@ -8,7 +8,7 @@ import com.example.myfitnessapp.util.Response
 
 interface WorkoutRepository {
 
-
+    //suspend pauses the execution of the current coroutine, saving all local variables.
     suspend fun addWorkoutPlan(workoutPlan: WorkoutPlan, workouts: ArrayList<Workout>, uid:String): Response<Void>
 
     suspend fun getWorkoutPlan(uid:String): Response<QuerySnapshot>

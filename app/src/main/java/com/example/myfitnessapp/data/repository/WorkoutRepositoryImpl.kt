@@ -141,7 +141,12 @@ class WorkoutRepositoryImpl @Inject constructor(
     }
 
 
-
+    /**
+     * Inside the body of get , call withContext(Dispatchers.IO) to create a block that runs on the IO thread pool.
+     * Any code you put inside that block always executes via the IO dispatcher.
+     * Since withContext is itself a suspend function,
+     * the function get is also a suspend function.
+     */
     override suspend fun addNewExercise(exercise: Exercise, uid:String): Response<Void> {
         return withContext(Dispatchers.IO) {
             try {

@@ -4,7 +4,7 @@ import com.google.firebase.auth.AuthResult
 import com.example.myfitnessapp.util.Response
 
 interface UserRepository {
-
+    //suspend pauses the execution of the current coroutine, saving all local variables.
     suspend fun createNewUser(userName: String, userEmailAddress: String, userLoginPassword: String): Response<AuthResult>
 
     fun hasUser(): Boolean
