@@ -3,6 +3,10 @@ package com.example.myfitnessapp.domain.repository
 import com.google.firebase.auth.AuthResult
 import com.example.myfitnessapp.util.Response
 
+/**
+ * An interface defines the repository with all logical
+ * read and write operations for a specific entity.
+ */
 interface UserRepository {
     //suspend pauses the execution of the current coroutine, saving all local variables.
     suspend fun createNewUser(userName: String, userEmailAddress: String, userLoginPassword: String): Response<AuthResult>
