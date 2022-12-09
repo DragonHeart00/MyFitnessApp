@@ -44,6 +44,12 @@ object AppModule {
 }
 
 /**
+ * provideFirebaseAuth
+ * will create reference to the repository
+ *
+ */
+
+/**
  * @Provides
  * it is annotation tells Dagger that the method provides
  * a certain type of dependency, in this case, a Context object.

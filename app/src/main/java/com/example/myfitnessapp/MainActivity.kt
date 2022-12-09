@@ -11,9 +11,10 @@ import com.example.myfitnessapp.presentation.shared.viewmodel.UserViewModel
 import com.example.myfitnessapp.presentation.shared.viewmodel.WorkoutViewModel
 import com.example.myfitnessapp.ui.theme.MyFitnessAppTheme
 import dagger.hilt.android.AndroidEntryPoint
-// Marks an Android component class to be setup for
-// injection with the standard Hilt Dagger Android components
-// it is going to be injecting dependencies into this thing
+
+/**
+ * to inject our Android classes, the standard Hilt components are used as the injectors
+ */
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 

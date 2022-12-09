@@ -45,10 +45,6 @@ fun ProfileScreen
 ) = with(workoutViewModel){
 
     var openLogoutDialog by remember { mutableStateOf(false) }
-    val notification = rememberSaveable {mutableStateOf("")}
-    if (notification.value.isNotEmpty()){
-        notification.value = ""
-    }
 
 
     Column(modifier = Modifier
